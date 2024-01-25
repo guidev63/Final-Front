@@ -1,0 +1,10 @@
+.head{
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+     margin-bottom: 10px;
+}
+h2{
+     width: 95%;
+     text-align: center;
+}

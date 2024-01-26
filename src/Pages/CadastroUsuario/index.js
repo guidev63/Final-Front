@@ -11,7 +11,7 @@ import Head from '../../componentes/head';
 
 export default function Cadastrousuario() {
     const navigate =useNavigate();
-
+    
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
@@ -25,11 +25,11 @@ export default function Cadastrousuario() {
     function salvardados(e) {
         e.preventDefault();
         // console.log(usuario);
-         if(nome=="")
+         if(nome==="")
         alert("Preencha o campo nome")
-        else if(email=="")
+        else if(email==="")
         alert("Preencha o campo email")
-        else if (senha=="")
+        else if (senha==="")
         alert("Preencha o campo senha")
         else {
        const banco = JSON.parse(localStorage.getItem("cd-usuarios") || "[]");

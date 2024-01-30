@@ -40,11 +40,11 @@ export default function Cadastroproduto() {
         else if (estoque_maximo === "" || estoque_maximo === 0)
             i++;
         if (i == 0) {
-            const banco = JSON.parse(localStorage.getItem("cd-produtos") || "[]");
+            const banco = JSON.parse(localStorage.getItem("cd-produto") || "[]");
             banco.push(produto);
-            localStorage.setItem("cd-produtos", JSON.stringify(banco));
+            localStorage.setItem("cd-produto", JSON.stringify(banco));
             alert("Produto salvo com sucesso");
-            navigate('/listaproduto');
+            navigate('/listaProduto');
         } else {
             alert("Verifique! Há campos vazios!")
         }

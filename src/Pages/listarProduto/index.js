@@ -13,6 +13,8 @@ export default function Listarproduto() {
     // { id: 2, nome: "felipe", email: "felipe@gmail.com", senha: "123" },
     // { id: 3, nome: "nilson", email: "nilson@gmail.com", senha: "123" },
     // ]
+
+    /*modificando  */
     useEffect(() => {
         mostrardados();
         console.table(banco)

@@ -21,8 +21,8 @@ export default function Listarproduto() {
     }, [])
 
     function mostrardados() {
-        setBanco(JSON.parse(localStorage.getItem("cd-produtos") || "[]"));
- 
+        setBanco(JSON.parse(localStorage.getItem("cd-produto") || "[]"));
+
     }
 
 

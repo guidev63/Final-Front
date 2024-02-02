@@ -12,26 +12,26 @@ import Head from '../../componentes/head';
 
 //fiz alteração aqui
 
-export default function Cadastroproduto() {
+export default function EntradaProduto() {
     const navigate = useNavigate();
 
-    const [status, setStatus] = useState("");
-    const [descricao, setDescricao] = useState("");
-    const [estoque_minimo, setEstoque_minimo] = useState("0");
-    const [estoque_maximo, setEstoque_maximo] = useState("10");
+    const [id_produto, setid_roduto] = useState("");
+    const [qtde, setqtde] = useState("");
+    const [valor_unitario, valor_Unitario] = useState("");
+    const [data_entrada, setdata_Entrada] = useState("");
 
     const produto = {
         id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
-        status,
-        descricao,
-        estoque_minimo,
-        estoque_maximo
+        id_PRODUTO,
+        QTDE,
+        VALOR_UNITARIO,
+        DATA_ENTRADA
 
     }
     function salvardados(e) {
         e.preventDefault();
         let i = 0;
-        if (status === "")
+        if (id_PRODUTO === "")
             i++;
         else if (descricao === "")
             i++;

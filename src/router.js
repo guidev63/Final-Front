@@ -7,7 +7,6 @@ import Editarusuario from './Pages/editarUsuario';
 import Cadastroproduto from './Pages/CadastrodeProduto';
 import Listarproduto from './Pages/listarProduto';
 
-
 export default function Rotas() {
     return (
         <BrowserRouter>

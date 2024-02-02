@@ -1,51 +1,51 @@
 import React, { useState, useEffect } from 'react';
 
 import '../../Pages/global.css';
-import Menu from '../../componentes/menu';
+import Menu from '../../componentes/menu'
 import { FiFilePlus } from "react-icons/fi";
 import { MdCancel } from "react-icons/md";
 import { FaSave } from "react-icons/fa";
 import { useNavigate, useParams } from 'react-router-dom';
 import Head from '../../componentes/head';
 
-
 export default function Editarusuario() {
-  const id = useParams.id;
+  let { id } = useParams();
   const navigate = useNavigate();
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [banco, setBanco] = useState([]);
-  const[status,setStatus] = useState(0);
+  const [status, setStatus] = useState(true);
+
+
   const usuario = {
+    id,
     nome,
     email,
     senha
   }
   useEffect(() => {
-    if(status=== 1){
-      mostrardados(id);
-      setStatus(1);
-    }
-    mostrardados();
 
-  }, []);
+    mostrardados(id);
 
+
+
+  }, [])
   async function mostrardados(idu) {
-    let listaUser =JSON.parse(localStorage.getItem("cd-usuarios"));
-           listaUser.
-               filter(value => value.id ==idu).
-               map(value => {
-                   setNome(value.nome);
-                   setEmail(value.email);
-                   setSenha(value.senha);
-                   
-       
-       })
+    let listaUser = JSON.parse(localStorage.getItem("cd-usuarios"));
+
+    listaUser.
+      filter(value => value.id == idu).
+      map(value => {
+        setNome(value.nome);
+        setEmail(value.email);
+        setSenha(value.senha);
 
 
+      })
+  }
 
-     }
+
   function salvardados(e) {
     e.preventDefault();
 
@@ -58,8 +58,10 @@ export default function Editarusuario() {
       i++;
     if (i == 0) {
       const banco = JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
-      banco.push(usuario);
-      localStorage.setItem("cd-usuarios", JSON.stringify(banco));
+      let dadosnovos = banco.filter(item => item.id !== id);
+      console.log(dadosnovos);
+      dadosnovos.push(usuario);
+      localStorage.setItem("cd-usuarios", JSON.stringify(dadosnovos));
       alert("Usuário salvo com sucesso");
       navigate('/listausuario');
     } else {
@@ -96,6 +98,7 @@ export default function Editarusuario() {
               onChange={e => setSenha(e.target.value)}
               placeholder='Digite a senha'
             />
+
             <div className='acao'>
               <button className='btn-save'>
                 <FaSave />

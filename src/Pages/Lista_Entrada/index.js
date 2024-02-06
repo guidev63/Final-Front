@@ -57,14 +57,15 @@ export default function Listaentrada() {
                 <Menu />
             </div>
             <div className='principal'>
-                <Head title="Lista de Endrada" />
+                <Head title="Lista de Entrada" />
                 
-                <Link to="/cadastrousuario" className='btn-novo'>Novo Cadastro</Link>
+                <Link to="/cadastroentrada" className='btn-novo'>Novo Cadastro</Link>
 
                 <table className="table">
                     <tr>
                         <th>Id</th>
                         <th>Id PRODUTO</th>
+                        <th>Quantidade</th>
                         <th>valor UNITARIO</th>
                         <th>DATA  ENTRADA</th>
                         <th></th>
@@ -74,9 +75,9 @@ export default function Listaentrada() {
                 return(
                   <tr key={linha.toString()}>
                     <td>{linha.id}</td>    
-                    <td>{linha.idproduto}</td>    
+                    <td>{linha.id_produto}</td>    
                     <td>{linha.quantidade}</td>    
-                    <td>{linha.valor_unitario}</td>    
+                    <td>{linha.valor_unitario}</td>     
                     <td>{linha.data_entrada}</td>    
    
                     <td className='botoes'> 

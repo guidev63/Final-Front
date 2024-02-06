@@ -12,15 +12,16 @@ import Head from '../../componentes/head';
 
 //fiz alteração aqui
 
-export default function EntradaProduto() {
+export default function Cadastroentrada() {
     const navigate = useNavigate();
 
     const [id_produto, setId_produto] = useState("");
     const [quantidade, setQuantidade] = useState("");
     const [valor_unitario, setValor_Unitario] = useState("");
     const [data_entrada, setData_Entrada] = useState("");
+    
 
-    const produto = {
+    const Entrada = {
         id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
         id_produto,
         quantidade,
@@ -40,11 +41,11 @@ export default function EntradaProduto() {
         else if (data_entrada === "" || data_entrada === 0)
             i++;
         if (i == 0) {
-            const banco = JSON.parse(localStorage.getItem("cd-produto") || "[]");
-            banco.push(produto);
-            localStorage.setItem("cd-produto", JSON.stringify(banco));
-            alert("Produto salvo com sucesso");
-            navigate('/listarproduto');
+            const banco = JSON.parse(localStorage.getItem("cd-entradas") || "[]");
+            banco.push(Entrada);
+            localStorage.setItem("cd-entradas", JSON.stringify(banco));
+            alert("Entrada salva com sucesso");
+            navigate('/listarentrada');
         } else {
             alert("Verifique! Há campos vazios!")
         }
@@ -58,16 +59,18 @@ export default function EntradaProduto() {
 
             </div>
             <div className='principal'>
-                <Head title="Cadastro de Produto" />
+                <Head title="Cadastro de Entrada" />
                 <div className='form-container'>
                     <form className='form-cadastro' onSubmit={salvardados} >
        
                         <input type='text'
-                            value={id_produto} onChange={e => setId_produto(e.target.value)} placeholder='Digite a descrição' />
+                            value={id_produto} onChange={e => setId_produto(e.target.value)} placeholder="Digite o id do produto"  />
+                        <input type='text'
+                            value={quantidade} onChange={e => setQuantidade(e.target.value)} placeholder="Digite a quantidade do produto"  />
                         <input type='number'
-                            value={valor_unitario} onChange={e => setValor_Unitario(e.target.value)} placeholder='Digite sua senha' />
-                        <input type='number'
-                            value={data_entrada} onChange={e => setData_Entrada(e.target.value)} placeholder='Digite sua senha' />
+                            value={valor_unitario} onChange={e => setValor_Unitario(e.target.value)} placeholder="Digite o valor unitário do produto"  />
+                        <input type='date'
+                            value={data_entrada} onChange={e => setData_Entrada(e.target.value)}  />
                         <div>
                             <button className='btn-save'>
                                 <FaSave />

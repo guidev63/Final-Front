@@ -4,9 +4,10 @@ import Dashboard from './Pages/dashboard';
 import Listausuario from './Pages/listarUsuario';
 import Cadastrousuario from './Pages/CadastroUsuario';
 import Editarusuario from './Pages/editarUsuario';
-import Cadastroproduto from './Pages/CadastrodeProduto';
 import Listarproduto from './Pages/listarProduto';
-import EntradaProduto from './Pages/EntradaProduto';
+import Cadastroproduto from './Pages/CadastrodeProduto';
+import Cadastroentrada from './Pages/Cadastroentrada';
+import EntradaProduto from './Pages/Cadastroentrada';
 import Listaentrada from './Pages/Lista_Entrada';
 export default function Rotas() {
     return (
@@ -18,9 +19,11 @@ export default function Rotas() {
                 <Route path="/listarproduto" element={<Listarproduto />} />
                 <Route path="/cadastrousuario" element={<Cadastrousuario />} />
                 <Route path="/cadastroproduto" element={<Cadastroproduto />} />
+                <Route path="/cadastroentrada" element={<Cadastroentrada />} />
                 <Route path="/editarusuario/:id" element={<Editarusuario />} />
                 <Route path="/entrada_Produto" element={<EntradaProduto />} />
-                <Route path="/listaEntrada" element={<Listaentrada />} /> {/* Added this line */}
+                <Route path="/listarentrada" element={<Listaentrada />} /> {/* Added this line */}
+
             </Routes>
         </BrowserRouter>
     );

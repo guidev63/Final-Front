@@ -1,21 +1,31 @@
+body{
+    margin: 0;
+    color: black;
+}
 .dashboard-container {
+
     background-color: #0055b3;
     height: 100vh;
     display: flex;
     flex-direction: row;
     width: 90%;
     margin: auto;
+
+    
 }
 
 * {
     padding: 0%;
     margin: 0%;
+background-image: url(/src/);
 }
 
 .menu {
     width: 20%;
     background-color: #ffffff;
     margin: 5px;
+    background-image: url(/src/assets/img/5799725.jpg);
+
 }
 
 .principal {
@@ -23,11 +33,14 @@
     background-color: #ffffff;
     margin: 5px;
     padding: 5px;
+    background-image: url(/src/assets/img/5799725.jpg);
+    
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    color: black;
 
 }
 
@@ -86,8 +99,7 @@ td {
     border: solid 0.5px #adb9d3;
     margin-bottom: 10px;
     width: 120px;
-
-
+    margin-right: 45px; /* Adicionando esta linha para afastar do lado direito */
 }
 
 .btn-cancel {
@@ -96,9 +108,8 @@ td {
     color: #f8f8f8;
     border-radius: 5px;
     border: solid 0.5px #adb9d3;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     width: 120px;
-
 }
 
 .acao {
@@ -107,6 +118,7 @@ td {
     flex-direction: row;
     justify-content: space-around;
 }
+
 
 .form-container {
 
@@ -126,3 +138,7 @@ td {
     border-radius: 5px;
 
 }
+/* SeuComponente.css */
+
+
+  

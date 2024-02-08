@@ -29,6 +29,14 @@ export default function Cadastroentrada() {
         data_entrada
 
     }
+    const dadosestoque= {
+        id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
+        id_produto,
+        quantidade,
+        valor_unitario
+        
+
+    }
     function salvardados(e) {
         e.preventDefault();
         let i = 0;
@@ -41,9 +49,11 @@ export default function Cadastroentrada() {
         else if (data_entrada === "" || data_entrada === 0)
             i++;
         if (i == 0) {
+            const banco = JSON.parse(localStorage.getItem("cd-estoques") || "[]");
             const banco = JSON.parse(localStorage.getItem("cd-entradas") || "[]");
             banco.push(Entrada);
             localStorage.setItem("cd-entradas", JSON.stringify(banco));
+            localStorage.setItem("cd-estoques", JSON.stringify(dadosestoque));
             alert("Entrada salva com sucesso");
             navigate('/listarentrada');
         } else {

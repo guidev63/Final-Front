@@ -19,6 +19,7 @@ export default function Cadastroproduto() {
     const [descricao, setDescricao] = useState("");
     const [estoque_minimo, setEstoque_minimo] = useState("0");
     const [estoque_maximo, setEstoque_maximo] = useState("10");
+    
 
     const produto = {
         id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
@@ -39,7 +40,9 @@ export default function Cadastroproduto() {
             i++;
         else if (estoque_maximo === "" || estoque_maximo === 0)
             i++;
-        if (i == 0) {
+        if (i == 0)
+        
+         {
             const banco = JSON.parse(localStorage.getItem("cd-produto") || "[]");
             banco.push(produto);
             localStorage.setItem("cd-produto", JSON.stringify(banco));

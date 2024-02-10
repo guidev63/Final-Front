@@ -29,14 +29,15 @@ export default function Cadastroentrada() {
         data_entrada
 
     }
+
     const dadosestoque = {
         id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
         id_produto,
         quantidade,
         valor_unitario
 
-
     }
+
     function alterarEstoque(idproduto, quantidade, valor) {
         const estoque = JSON.parse(localStorage.getItem("cd-estoques") || "[]");
 
@@ -55,7 +56,6 @@ export default function Cadastroentrada() {
             dadosnovos.push(updateestoque);
             localStorage.setItem("cd-estoques", JSON.stringify(dadosnovos));
         } else {
-
 
             estoque.push(dadosestoque);
         }
@@ -81,13 +81,12 @@ export default function Cadastroentrada() {
             localStorage.setItem("cd-entradas", JSON.stringify(banco));
             alterarEstoque(id_produto, quantidade, valor_unitario)
             alert("Entrada salvo com sucesso");
-            navigate('/listaentrada');
+            navigate('/listarentrada');
         } else {
             alert("Verifique! Há campos vazios!")
         }
     }
     function mostrarproduto() {
-
     }
     return (
         <div className="dashboard-container">

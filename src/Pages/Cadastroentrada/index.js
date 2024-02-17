@@ -41,7 +41,6 @@ export default function Cadastroentrada() {
     function alterarEstoque(idproduto, quantidade, valor) {
         const estoque = JSON.parse(localStorage.getItem("cd-estoques") || "[]");
 
-
         const produtoExistente = estoque.find(item => item.id_produto === idproduto);
 
         if (produtoExistente) {
@@ -75,7 +74,7 @@ export default function Cadastroentrada() {
         else if (data_entrada === "" || data_entrada === 0)
             i++;
         if (i == 0) {
-            const banco = JSON.parse(localStorage.getItem("cd-entradas"));
+            const banco = JSON.parse(localStorage.getItem("cd-entradas")|| "[]");
 
             banco.push(Entrada);
             localStorage.setItem("cd-entradas", JSON.stringify(banco));

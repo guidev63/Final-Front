@@ -9,9 +9,11 @@ import Head from '../../componentes/head';
 
 export default function Listasaida() {
     const [banco, setBanco] = useState([]);
-useEffect(()=>{
- mostrarDados();
-},[]);
+
+    useEffect(() => {
+        mostrarDados();
+    }, []);
+
     function mostrarDados() {
         const saida = JSON.parse(localStorage.getItem("cd-saidas") || "[]");
         setBanco(saida);
@@ -47,23 +49,20 @@ useEffect(()=>{
             </div>
             <div className='principal'>
                 <Head title="Lista de Saída" />
-                <Link to="/cadastrosaida" className='btn-novo'>saída</Link>
+                <Link to="/cadastrosaida" className='btn-novo'>Saída</Link>
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Produto</th>
+                            <th>ID do Produto</th>
                             <th>Quantidade</th>
                             <th>Valor Unitário</th>
                             <th>Data de Saída</th>
                             <th></th>
-                            
                         </tr>
                     </thead>
                     <tbody>
                         {banco.map((linha, index) => (
                             <tr key={index}>
-                              
                                 <td>{linha.id_produto}</td>
                                 <td>{linha.quantidade}</td>
                                 <td>{linha.valor_unitario}</td>

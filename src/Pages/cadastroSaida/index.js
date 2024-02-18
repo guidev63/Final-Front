@@ -1,86 +1,79 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../../Pages/global.css';
 import Menu from '../../componentes/menu';
-import { FiTrash } from "react-icons/fi";
+import { FiSave, FiCancel } from "react-icons/fi";
+import { MdOutlineCancel } from "react-icons/md";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Head from '../../componentes/head';
 
-export default function Listasaida() {
-    const [banco, setBanco] = useState([]);
+export default function Cadastrosaida() {
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        mostrarDados();
-    }, []); // Chamada apenas na montagem do componente (equivalente ao componentDidMount)
+    const [id_produto, setId_produto] = useState("");
+    const [quantidade, setQuantidade] = useState("");
+    const [valor_unitario, setValor_Unitario] = useState("");
+    const [data_saida, setData_Saida] = useState("");
 
-    function mostrarDados() {
-        const saida = JSON.parse(localStorage.getItem("cd-saidas") || "[]");
-        setBanco(saida);
-    }
+    const Saida = {
+        id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
+        id_produto,
+        quantidade,
+        valor_unitario,
+        data_saida
+    };
 
-    function apagar(id) {
-        confirmAlert({
-            title: 'Excluir Saída',
-            message: 'Deseja realmente excluir essa Saída?',
-            buttons: [
-                {
-                    label: 'Sim',
-                    onClick: () => {
-                        let dadosNovos = banco.filter(item => item.id !== id);
-                        localStorage.setItem("cd-saidas", JSON.stringify(dadosNovos));
-                        setBanco(dadosNovos);
-                        alert(`Você apagou uma saída id:${id}`);
-                    }
-                },
-                {
-                    label: 'Não',
-                    onClick: () => alert('Click No')
-                }
-            ]
-        });
+    function salvarDados(e) {
+        e.preventDefault();
+        let i = 0;
+        if (id_produto === "")
+            i++;
+        else if (quantidade === "")
+            i++;
+        else if (valor_unitario === "" || valor_unitario === 0)
+            i++;
+        else if (data_saida === "" || data_saida === 0)
+            i++;
+        if (i === 0) {
+            const banco = JSON.parse(localStorage.getItem("cd-saidas") || "[]");
+            banco.push(Saida);
+            localStorage.setItem("cd-saidas", JSON.stringify(banco));
+            // Aqui você pode adicionar qualquer lógica adicional, como a atualização do estoque, se necessário
+            alert("Saída salva com sucesso");
+            navigate('/listasaida');
+        } else {
+            alert("Verifique! Há campos vazios!");
+        }
     }
 
     return (
         <div className="dashboard-container">
             <div className='menu'>
-                <h1> menu </h1>
+                <h1>Menu</h1>
                 <Menu />
             </div>
             <div className='principal'>
-                <Head title="Lista de Saída" />
-                <Link to="/cadastrosaida" className='btn-novo'>saída</Link>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Produto</th>
-                            <th>Quantidade</th>
-                            <th>Valor Unitário</th>
-                            <th>Data de Saída</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {banco.map((linha, index) => (
-                            <tr key={index}>
-                                <td>{linha.id}</td>
-                                <td>{linha.nome_produto}</td>
-                                <td>{linha.quantidade}</td>
-                                <td>{linha.valor_unitario}</td>
-                                <td>{linha.data_saida}</td>
-                                <td className='botoes'>
-                                    <FiTrash
-                                        size={18}
-                                        color='red'
-                                        onClick={() => apagar(linha.id)}
-                                    />
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                <Head title="Cadastro de Saída" />
+                <div className='form-container'>
+                    <form className='form-cadastro' onSubmit={salvarDados}>
+                        <input type='text' value={id_produto} onChange={e => setId_produto(e.target.value)} placeholder="Digite o ID do produto" />
+                        <input type='text' value={quantidade} onChange={e => setQuantidade(e.target.value)} placeholder="Digite a quantidade do produto" />
+                        <input type='number' value={valor_unitario} onChange={e => setValor_Unitario(e.target.value)} placeholder="Digite o valor unitário do produto" />
+                        <input type='date' value={data_saida} onChange={e => setData_Saida(e.target.value)} />
+                        <div>
+                            <button className='btn-save'>
+                                <FiSave />
+                                Salvar
+                            </button>
+                            <button className='btn-cancel' onClick={() => navigate('/listasaida')}>
+                                <MdOutlineCancel />
+                                Cancelar
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    )
+    );
 }

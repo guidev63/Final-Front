@@ -15,3 +15,41 @@ nav{
 .link:hover{
  background-color: #0056b3;
 }
+.link {
+    display: flex;
+    align-items: center; /* Alinha itens verticalmente */
+    padding: 10px; /* Adiciona um espaçamento interno */
+    text-decoration: none; /* Remove decoração do link */
+    color: #333; /* Cor do texto */
+}
+
+.icon {
+    margin-right: 5px; /* Adiciona uma pequena margem à esquerda para separar o ícone do texto */
+}
+nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    background-color: #007bff;
+    border-radius: 5px;
+    padding: 10px;
+    color: #ffffff;
+    width: 85%;
+    margin: auto;
+    margin-bottom: 8px;
+    transition: background-color 0.3s, transform 0.2s; /* Adiciona transição suave para mudança de cor e transformação */
+}
+
+.link:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Aumenta a escala do link ao passar o mouse */
+}
+
+.icon {
+    margin-right: 5px;
+}

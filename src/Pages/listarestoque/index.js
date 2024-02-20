@@ -71,8 +71,8 @@ const navigate=useNavigate();
     <div className="dashboard-container">
       
         <div className='menu'>
-     
         <Menu />
+
         </div>
         <div className='principal'>
         <Head title="Lista de Estoque de Produtos" />

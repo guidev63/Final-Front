@@ -53,16 +53,20 @@ export default function Listasaida() {
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>ID do Produto</th>
+
+                            <th>ID </th>
+                            <th>Produto</th>
                             <th>Quantidade</th>
-                            <th>Valor Unitário</th>
-                            <th>Data de Saída</th>
+                            <th>valor unitario</th>
+                            <th>data saida</th>
                             <th></th>
+                            
                         </tr>
                     </thead>
                     <tbody>
                         {banco.map((linha, index) => (
                             <tr key={index}>
+                                <td>{linha.id}</td>
                                 <td>{linha.id_produto}</td>
                                 <td>{linha.quantidade}</td>
                                 <td>{linha.valor_unitario}</td>

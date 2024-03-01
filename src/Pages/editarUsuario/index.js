@@ -7,6 +7,8 @@ import { MdCancel } from "react-icons/md";
 import { FaSave } from "react-icons/fa";
 import { useNavigate, useParams } from 'react-router-dom';
 import Head from '../../componentes/head';
+import api from '../../server/api';
+import { set } from 'y';
 
 export default function Editarusuario() {
   let { id } = useParams();
@@ -15,8 +17,7 @@ export default function Editarusuario() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [banco, setBanco] = useState([]);
-  const [status, setStatus] = useState(true);
-
+  const [status, setStatus] = useState(true);   
 
   const usuario = {
     id,
@@ -32,17 +33,27 @@ export default function Editarusuario() {
 
   }, [])
   async function mostrardados(idu) {
-    let listaUser = JSON.parse(localStorage.getItem("cd-usuarios"));
+   // let listaUser = JSON.parse(localStorage.getItem("cd-usuarios"));
 
-    listaUser.
-      filter(value => value.id == idu).
-      map(value => {
-        setNome(value.nome);
-        setEmail(value.email);
-        setSenha(value.senha);
+   // listaUser.
+    //  filter(value => value.id == idu).
+     // map(value => {
+      //  setNome(value.nome);
+      //  setEmail(value.email);
+      //  setSenha(value.senha);
 
 
-      })
+    //  })
+          api.get(`/usuario/${idu}`)
+          .then(res=>{
+            console.log(res.data.usuario);
+            if(res.status===200){
+              setNome(res.data.usuario[0].nome);
+              setEmail(res.data.usuario[0].email);
+              setSenha (res.data.usuario[0].senha);
+
+            }
+          })
   }
 
 
@@ -56,15 +67,23 @@ export default function Editarusuario() {
       i++;
     else if (senha == "")
       i++;
-    if (i == 0) {
-      const banco = JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
-      let dadosnovos = banco.filter(item => item.id !== id);
-      console.log(dadosnovos);
-      dadosnovos.push(usuario);
-      localStorage.setItem("cd-usuarios", JSON.stringify(dadosnovos));
-      alert("Usuário salvo com sucesso");
-      navigate('/listausuario');
-    } else {
+    if (i == 0) 
+    {
+      // const banco = JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
+      // let dadosnovos = banco.filter(item => item.id !== id);
+      // console.log(dadosnovos);
+      // dadosnovos.push(usuario);
+      // localStorage.setItem("cd-usuarios", JSON.stringify(dadosnovos));
+      // alert("Usuário salvo com sucesso");
+      api.put('/usuario',usuario,
+      {headers:{"content-type":"application/json"}})
+          .then(function(response){
+           console.log(response.data)
+           alert(response.data.mensagem);
+           navigate('/listausuario');
+          })
+
+    }else{
       alert("Verifique! Há campos vazios!")
     }
   }

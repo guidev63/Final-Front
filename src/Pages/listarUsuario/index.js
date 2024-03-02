@@ -13,7 +13,6 @@ export default function Listausuario() {
   const [dados, setDados] = useState([]);
   const [banco, setBanco] = useState([]);
 
-
   // const dados = [
   // { id: 1, nome: "guilherme", email: "guilhermedev23@gmail.com", senha: "123" },
   // { id: 2, nome: "felipe", email: "felipe@gmail.com", senha: "123" },

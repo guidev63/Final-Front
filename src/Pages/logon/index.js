@@ -9,23 +9,31 @@ export default function Logon() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
-  const logar = async (e) => {
+
+  const logar = (e) => {
     e.preventDefault();
+    // let banco = JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
+    // let dadosnovos = banco.filter(item => item.email === email && item.senha === senha);
+    // console.log(banco);
+    // if (dadosnovos.length > 0) {
+    //   navigate('/dashboard');
+    // } else {
+    //   alert("Dados incorretos!!!");
+    // }
+    api.post("usuario/login", { email, senha })
+      .then(res => {
+        console.log(res.status)
+        if (res.status === 200) {
+          alert(res.data.mensagem)
+          navigate('/dashboard')
 
-    try {
-      const response = await api.post('/usuario/login', { email, senha });
-      console.log(response.data);
+        }
+        if(res.status===404){
+          alert(res.data.mensagem)
+        }
+      })
+  }
 
-      if (response.status === 200) {
-        navigate('/dashboard');
-      } else {
-        alert('Dados incorretos!!!');
-      }
-    } catch (error) {
-      console.error('Erro ao fazer login:', error);
-      alert('Ocorreu um erro ao fazer login. Por favor, tente novamente.');
-    }
-  };
 
   return (
     <div className="logon-container">

@@ -39,7 +39,7 @@ export default function Cadastrousuario() {
             api.post('/usuario',usuario,
             {headers:{"content-type":"application/json"}})
                 .then(function(response){
-                 console.log(response.data)
+                 console.log(response.data);
                  alert(response.data.mensagem);
                 }
                   

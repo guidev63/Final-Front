@@ -7,6 +7,8 @@ import { MdCancel } from "react-icons/md";
 import { FaSave } from "react-icons/fa";
 import { useNavigate, useParams } from 'react-router-dom';
 import Head from '../../componentes/head';
+import api from '../../server/api';
+
 
 export default function Editarproduto() {
   let { id } = useParams();

@@ -43,7 +43,7 @@ export default function Cadastrousuario() {
                  alert(response.data.mensagem);
                 }
                   
-                )
+            )
             
           //  navigate('/listausuario');
         }

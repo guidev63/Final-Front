@@ -9,7 +9,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { useNavigate } from 'react-router-dom';
 import Head from '../../componentes/head';
-
+import api from '../../server/api';
 //fiz alteração aqui
 
 export default function Cadastroproduto() {
@@ -22,13 +22,14 @@ export default function Cadastroproduto() {
     
 
     const produto = {
-        id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
+       // id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
         status,
         descricao,
         estoque_minimo,
         estoque_maximo
 
     }
+
     function salvardados(e) {
         e.preventDefault();
         let i = 0;
@@ -43,15 +44,32 @@ export default function Cadastroproduto() {
         if (i == 0)
         
          {
-            const banco = JSON.parse(localStorage.getItem("cd-produto") || "[]");
-            banco.push(produto);
-            localStorage.setItem("cd-produto", JSON.stringify(banco));
-            alert("Produto salvo com sucesso");
+            api.post("/produtos", produto)
+  .then(res => {
+    console.log(res.status)
+    if (res.status === 201) { // 201 Created
+      alert(res.data.mensagem)
+      navigate('/listarproduto');
+      // Adicione qualquer manipulação adicional após o cadastro bem-sucedido
+    }
+    // Adicione tratamento para outros códigos de status, se necessário
+  })
+  .catch(error => {
+    console.error("Erro ao cadastrar produto:", error);
+    
+    // Adicione tratamento de erros aqui, se necessário
+  });
+            //const banco = JSON.parse(localStorage.getItem("cd-produto") || "[]");
+           // banco.push(produto);
+          //  localStorage.setItem("cd-produto", JSON.stringify(banco));
+         
             navigate('/listarproduto');
         } else {
             alert("Verifique! Há campos vazios!")
         }
     }
+    
+
     return (
         <div className="dashboard-container">
 

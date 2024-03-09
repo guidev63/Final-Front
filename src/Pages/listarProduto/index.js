@@ -6,6 +6,8 @@ import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { Link } from 'react-router-dom';
 import Head from '../../componentes/head';
+import api from '../../server/api';
+
 export default function Listarproduto() {
     const [banco, setBanco] = useState([]);
     // const dados = [
@@ -17,13 +19,18 @@ export default function Listarproduto() {
     /*modificando  */
     useEffect(() => {
         mostrardados();
-        console.table(banco)
+        //console.table(banco)
     }, [])
 
-    function mostrardados() {
-        setBanco(JSON.parse(localStorage.getItem("cd-produto") || "[]"));
-
+    function  mostrardados() {
+        //setBanco(JSON.parse(localStorage.getItem("cd-produto") || "[]"));
+        api.get('/produtos')
+        .then(res => {
+          console.log(res.data.produtos)
+          setBanco(res.data.produtos)
+        })
     }
+    
 
 
     const apagar = (id) => {
@@ -48,6 +55,8 @@ export default function Listarproduto() {
             ]
         });
     };
+
+    
     return (
 
         <div className="dashboard-container">

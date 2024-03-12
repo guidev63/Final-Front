@@ -6,6 +6,8 @@ import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { Link } from 'react-router-dom';
 import Head from '../../componentes/head';
+import api from '../../server/api';
+
 
 export default function Listaentrada() {
   const [dados, setDados] = useState([]);
@@ -21,7 +23,12 @@ export default function Listaentrada() {
   }, [])
 
   function mostrardados() {
-    setBanco(JSON.parse(localStorage.getItem("cd-entradas") || "[]"));
+   // setBanco(JSON.parse(localStorage.getItem("cd-entradas") || "[]"));
+   api.get('/entrada')
+        .then(res => {
+          console.log(res.data.produtos)
+          setBanco(res.data.produtos)
+        })
   }
 
 
@@ -47,18 +54,27 @@ export default function Listaentrada() {
       ]
     });
   };
-  function mostrarnome(id_produto) {
+   function mostrarnome(id_produto) {
     let nome = "";
-    const listarProduto = (JSON.parse(localStorage.getItem("cd-produto") || "[]"));
-    listarProduto.
-      filter(value => value.id == id_produto).
-      map(value => {
+    //const listarProduto = (JSON.parse(localStorage.getItem("cd-produto") || "[]"));
+    //listarProduto.
+    //  filter(value => value.id == id_produto).
+     // map(value =>{
 
-        nome = value.descricao;
-
-
+      //  nome = value.descricao;
+      api.get(`/produtos/${id_produto}`)
+      .then(res => {
+    
+        //setBanco(res.data.produtos)
+        console.log(res.data.produto[0].descricao)
+        nome = res.data.produto[0].descricao;
+        return nome;
+      
       })
-    return nome;
+      return nome;
+
+    //  })
+
   }
 
   return (

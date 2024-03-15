@@ -7,7 +7,6 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { Link } from 'react-router-dom';
 import Head from '../../componentes/head';
 import api from '../../server/api';
-import { set } from 'y';
 
 export default function Listausuario() {
   const [dados, setDados] = useState([]);

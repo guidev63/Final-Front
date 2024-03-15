@@ -8,7 +8,6 @@ import { FaSave } from "react-icons/fa";
 import { useNavigate, useParams } from 'react-router-dom';
 import Head from '../../componentes/head';
 import api from '../../server/api';
-import { set } from 'y';
 
 export default function Editarusuario() {
   let { id } = useParams();

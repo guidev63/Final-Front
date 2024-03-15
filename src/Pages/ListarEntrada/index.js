@@ -7,6 +7,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { Link } from 'react-router-dom';
 import Head from '../../componentes/head';
 import api from '../../server/api';
+import moment from 'moment/moment';
 
 
 export default function Listaentrada() {
@@ -31,7 +32,9 @@ export default function Listaentrada() {
         })
   }
 
-
+function formatarData(data){
+  return moment(data).format('DD/MM/YYYY');
+}
   const apagar = (id) => {
     confirmAlert({
       title: 'Excluir Entrada',
@@ -95,11 +98,12 @@ export default function Listaentrada() {
         <table className="table">
           <tr>
             <th>Id</th>
+            <th>ID_PRODUTO</th>
             <th>PRODUTO</th>
             <th>Quantidade</th>
             <th>valor UNITARIO</th>
             <th>DATA  ENTRADA</th>
-
+            <th></th>
             <th></th>
           </tr>
           {
@@ -107,10 +111,11 @@ export default function Listaentrada() {
               return (
                 <tr key={linha.toString()}>
                   <td>{linha.id}</td>
-                  <td>{mostrarnome(linha.id_produto)}</td>
+                  <td>{linha.id_produto}</td>
+                  <td>{linha.descricao}</td>
                   <td>{linha.quantidade}</td>
                   <td>{linha.valor_unitario}</td>
-                  <td>{linha.data_entrada}</td>
+                  <td>{formatarData(linha.data_entrada)}</td>
 
                   <td className='botoes'>
                     <FiTrash

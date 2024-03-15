@@ -7,6 +7,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { useNavigate } from 'react-router-dom';
 import Head from '../../componentes/head';
+import api from '../../server/api';
 
 export default function Cadastrosaida() {
     const navigate = useNavigate();
@@ -16,7 +17,7 @@ export default function Cadastrosaida() {
     const [valor_unitario, setValor_Unitario] = useState("");
     const [data_saida, setData_Saida] = useState("");
 
-    const Saida = {
+    const saida = {
         id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
         id_produto,
         quantidade,
@@ -36,14 +37,22 @@ export default function Cadastrosaida() {
         else if (data_saida === "" || data_saida === 0)
             i++;
         if (i === 0) {
-            const banco = JSON.parse(localStorage.getItem("cd-saidas") || "[]");
-            banco.push(Saida);
-            localStorage.setItem("cd-saidas", JSON.stringify(banco));
+           // const banco = JSON.parse(localStorage.getItem("cd-saidas") || "[]");
+           // banco.push(Saida);
+          //  localStorage.setItem("cd-saidas", JSON.stringify(banco));
             // Aqui você pode adicionar qualquer lógica adicional, como a atualização do estoque, se necessário
-            alert("Saída salva com sucesso");
-            navigate('/listasaida');
-        } else {
-            alert("Verifique! Há campos vazios!");
+
+            //alert("Saída salva com sucesso");
+            api.post('/saida', saida, { headers: { "content-type": "application/json" } })
+            .then(function(response){
+                console.log(response.data);
+                alert(response.data.mensagem);
+               // navigate('/listasaida');
+            })
+            .catch(function(error) {
+                console.error('Erro ao salvar a saída:', error);
+                alert('Erro ao salvar a saída');
+            });
         }
     }
 

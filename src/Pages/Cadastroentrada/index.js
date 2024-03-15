@@ -9,6 +9,8 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { useNavigate } from 'react-router-dom';
 import Head from '../../componentes/head';
+import api from '../../server/api';
+
 
 //fiz alteração aqui
 
@@ -37,6 +39,7 @@ export default function Cadastroentrada() {
         valor_unitario
 
     }
+
 
     function alterarEstoque(idproduto, quantidade, valor) {
         const estoque = JSON.parse(localStorage.getItem("cd-estoques") || "[]");
@@ -74,18 +77,28 @@ export default function Cadastroentrada() {
         else if (data_entrada === "" || data_entrada === 0)
             i++;
         if (i == 0) {
-            const banco = JSON.parse(localStorage.getItem("cd-entradas")|| "[]");
+          //  const banco = JSON.parse(localStorage.getItem("cd-entradas") || "[]");
 
-            banco.push(Entrada);
-            localStorage.setItem("cd-entradas", JSON.stringify(banco));
-            alterarEstoque(id_produto, quantidade, valor_unitario)
-            alert("Entrada salvo com sucesso");
-            navigate('/listarentrada');
-        } else {
+           // banco.push(Entrada);
+          //  localStorage.setItem("cd-entradas", JSON.stringify(banco));
+          //  alterarEstoque(id_produto, quantidade, valor_unitario)
+        //    alert("Entrada salvo com sucesso");
+           // navigate('/listarentrada');
+           api.post('/entrada',Entrada,
+           {headers:{"content-type":"application/json"}})
+               .then(function(response){
+                console.log(response.data);
+                alert(response.data.mensagem);
+               }
+                 
+           )
+        }
+        else {
             alert("Verifique! Há campos vazios!")
         }
     }
     function mostrarproduto() {
+    
     }
     return (
         <div className="dashboard-container">

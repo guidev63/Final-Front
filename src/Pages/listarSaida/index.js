@@ -6,6 +6,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { Link } from 'react-router-dom';
 import Head from '../../componentes/head';
+import api from '../../server/api';
 
 export default function Listasaida() {
     const [banco, setBanco] = useState([]);
@@ -15,10 +16,17 @@ export default function Listasaida() {
     }, []);
 
     function mostrarDados() {
-        const saida = JSON.parse(localStorage.getItem("cd-saidas") || "[]");
-        setBanco(saida);
+       // const saida = JSON.parse(localStorage.getItem("cd-saidas") || "[]");
+      //  setBanco(saida);
+      api.get('/saida')
+      .then(res => {
+        console.log(res.data.produtos)
+        setBanco(res.data.produtos)
+      })
+      
     }
-
+    
+    
     function apagar(id) {
         confirmAlert({
             title: 'Excluir Saída',

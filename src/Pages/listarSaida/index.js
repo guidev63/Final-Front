@@ -68,14 +68,14 @@ export default function Listasaida() {
                             <th>valor unitario</th>
                             <th>data saida</th>
                             <th></th>
-                            
+
                         </tr>
                     </thead>
                     <tbody>
                         {banco.map((linha, index) => (
                             <tr key={index}>
                                 <td>{linha.id}</td>
-                                <td>{linha.id_produto}</td>
+                                <td>{linha.descricao}</td>
                                 <td>{linha.quantidade}</td>
                                 <td>{linha.valor_unitario}</td>
                                 <td>{linha.data_saida}</td>

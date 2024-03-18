@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../Pages/global.css';
 import Menu from '../../componentes/menu';
 import { FiSave, FiCancel } from "react-icons/fi";
@@ -11,8 +11,9 @@ import api from '../../server/api';
 
 export default function Cadastrosaida() {
     const navigate = useNavigate();
-
+  
     const [id_produto, setId_produto] = useState("");
+    const [produto, setProduto] = useState([]);
     const [quantidade, setQuantidade] = useState("");
     const [valor_unitario, setValor_Unitario] = useState("");
     const [data_saida, setData_Saida] = useState("");
@@ -24,7 +25,10 @@ export default function Cadastrosaida() {
         valor_unitario,
         data_saida
     };
-
+      useEffect(()=>{
+      
+         mostrarproduto();
+      },[])
     function salvarDados(e) {
         e.preventDefault();
         let i = 0;
@@ -47,7 +51,7 @@ export default function Cadastrosaida() {
             .then(function(response){
                 console.log(response.data);
                 alert(response.data.mensagem);
-               // navigate('/listasaida');
+                navigate('/listasaida');
             })
             .catch(function(error) {
                 console.error('Erro ao salvar a saída:', error);
@@ -55,7 +59,14 @@ export default function Cadastrosaida() {
             });
         }
     }
+    function mostrarproduto(){
 
+        api.get("/produtos")
+        .then((resposta)=>{
+           setProduto(resposta.data.produtos)
+        })
+    }
+    
     return (
         <div className="dashboard-container">
             <div className='menu'>
@@ -67,6 +78,16 @@ export default function Cadastrosaida() {
                 <div className='form-container'>
                     <form className='form-cadastro' onSubmit={salvarDados}>
                         <input type='text' value={id_produto} onChange={e => setId_produto(e.target.value)} placeholder="Digite o ID do produto" />
+                        <select value={id_produto} onChange={e=>setId_produto(e.target.value)}  >
+                <option>Selecione um produto</option>
+                {
+                  produto.map((linha)=>{
+                    return(
+                      <option value={linha.id}>{linha.descricao}</option>
+                    )
+                  })
+                }
+              </select>
                         <input type='text' value={quantidade} onChange={e => setQuantidade(e.target.value)} placeholder="Digite a quantidade do produto" />
                         <input type='number' value={valor_unitario} onChange={e => setValor_Unitario(e.target.value)} placeholder="Digite o valor unitário do produto" />
                         <input type='date' value={data_saida} onChange={e => setData_Saida(e.target.value)} />
@@ -85,4 +106,5 @@ export default function Cadastrosaida() {
             </div>
         </div>
     );
-}
+
+            }

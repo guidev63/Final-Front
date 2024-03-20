@@ -18,6 +18,8 @@ export default function Cadastrosaida() {
     const [valor_unitario, setValor_Unitario] = useState("");
     const [data_saida, setData_Saida] = useState("");
 
+    const [qtd_estoque,setQtd_estoque] =useState(0);
+
     const saida = {
         id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
         id_produto,
@@ -29,6 +31,12 @@ export default function Cadastrosaida() {
       
          mostrarproduto();
       },[])
+      useEffect(()=>{
+        api.get(`/estoque/${id_produto}`).then((res)=>{
+            setQtd_estoque(res.data.estoques[0].quantidade)
+        })
+      },[id_produto])
+      
     function salvarDados(e) {
         e.preventDefault();
         let i = 0;
@@ -47,6 +55,7 @@ export default function Cadastrosaida() {
             // Aqui você pode adicionar qualquer lógica adicional, como a atualização do estoque, se necessário
 
             //alert("Saída salva com sucesso");
+
             api.post('/saida', saida, { headers: { "content-type": "application/json" } })
             .then(function(response){
                 console.log(response.data);
@@ -61,12 +70,12 @@ export default function Cadastrosaida() {
     }
     function mostrarproduto(){
 
-        api.get("/produtos")
+        api.get("/estoque")
         .then((resposta)=>{
-           setProduto(resposta.data.produtos)
+           setProduto(resposta.data.estoques)
         })
     }
-    
+ 
     return (
         <div className="dashboard-container">
             <div className='menu'>
@@ -83,7 +92,7 @@ export default function Cadastrosaida() {
                 {
                   produto.map((linha)=>{
                     return(
-                      <option value={linha.id}>{linha.descricao}</option>
+                      <option value={linha.id_produto}>{linha.descricao}</option>
                     )
                   })
                 }

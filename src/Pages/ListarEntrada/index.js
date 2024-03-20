@@ -27,8 +27,8 @@ export default function Listaentrada() {
    // setBanco(JSON.parse(localStorage.getItem("cd-entradas") || "[]"));
    api.get('/entrada')
         .then(res => {
-          console.log(res.data.produtos)
-          setBanco(res.data.produtos)
+          console.log(res.data.entradas)
+          setBanco(res.data.entradas)
         })
   }
 

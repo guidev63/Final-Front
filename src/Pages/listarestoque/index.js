@@ -6,6 +6,7 @@ import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { Link,useNavigate } from 'react-router-dom';
 import Head from '../../componentes/head';
+import api from '../../server/api';
 
 export default function Listaestoque(){
 const [dados,setDados] = useState([]);
@@ -31,7 +32,11 @@ const navigate=useNavigate();
 
     function mostrardados()
     {
-      setBanco(JSON.parse(localStorage.getItem("cd-estoques") || "[]"));
+     // setBanco(JSON.parse(localStorage.getItem("cd-estoques") || "[]"));
+     api.get("/estoque").then((res)=>{
+      setBanco(res.data.estoque); // Corrigindo para acessar a propriedade "estoque" na resposta
+    })
+    
     }
     function mostrarnome(idproduto){
       let nome= "";
@@ -85,7 +90,7 @@ const navigate=useNavigate();
         <table className="table">
            <tr>
                 <th>Id</th>
-                <th>Produto</th>
+                <th>id_produto</th>
                 <th>Quantidade</th>
                 <th>Valor Unitário</th>
                 <th></th>
@@ -96,9 +101,10 @@ const navigate=useNavigate();
                 return(
                   <tr key={linha.toString()}>
                     <td>{linha.id}</td>    
-                    <td>{mostrarnome(linha.id_produto)}</td>   
+                    <td>{linha.id_produto}</td>   
+                    <td>{linha.descricao}</td>   
                     <td>{linha.quantidade}</td>    
-                    <td>{formatReal(linha.valor_unitario)}</td>    
+                    <td>{linha.valor_unitario}</td>    
          
                     <td className='botoes'> 
                     <Link to={`/editarproduto/${linha.id}`}>

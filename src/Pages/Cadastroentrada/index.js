@@ -83,12 +83,13 @@ export default function Cadastroentrada() {
           //  localStorage.setItem("cd-entradas", JSON.stringify(banco));
           //  alterarEstoque(id_produto, quantidade, valor_unitario)
         //    alert("Entrada salvo com sucesso");
-           // navigate('/listarentrada');
+          
            api.post('/entrada',Entrada,
            {headers:{"content-type":"application/json"}})
                .then(function(response){
                 console.log(response.data);
                 alert(response.data.mensagem);
+                navigate('/listarentrada');
                }
                  
            )

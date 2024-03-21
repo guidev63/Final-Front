@@ -21,23 +21,26 @@ const navigate=useNavigate();
     useEffect(()=>{
       mostrardados();
     },[])
-
-
-    
+ 
     function formatReal(valor) {
       let valorFormatado = valor.replace(/\D/g, ''); // Remove caracteres não numéricos
       valorFormatado = valorFormatado.replace(/(\d{2})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3,$4'); // Formata com pontos e vírgulas
       return `R$ ${valorFormatado}`;
     }
 
-    function mostrardados()
-    {
-     // setBanco(JSON.parse(localStorage.getItem("cd-estoques") || "[]"));
-     api.get("/estoque").then((res)=>{
-      setBanco(res.data.estoque); // Corrigindo para acessar a propriedade "estoque" na resposta
-    })
-    
-    }
+    function mostrardados() {
+      api.get("/estoque")
+          .then((res) => {
+              if (res.data.estoques) {
+                  setBanco(res.data.estoques);
+              } else {
+                  console.error('Dados de estoque não encontrados na resposta:', res);
+              }
+          })
+          .catch(error => {
+              console.error('Erro ao buscar dados do estoque:', error);
+          });
+  }
     function mostrarnome(idproduto){
       let nome= "";
        const listarproduto = JSON.parse(localStorage.getItem("cd-produto") || "[]");
@@ -91,6 +94,7 @@ const navigate=useNavigate();
            <tr>
                 <th>Id</th>
                 <th>id_produto</th>
+                <th>produto</th>
                 <th>Quantidade</th>
                 <th>Valor Unitário</th>
                 <th></th>

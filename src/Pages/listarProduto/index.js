@@ -30,7 +30,7 @@ export default function Listarproduto() {
           setBanco(res.data.produtos)
         })
     }
-    
+   
 
 
     const apagar = (id) => {

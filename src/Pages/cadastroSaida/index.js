@@ -11,14 +11,14 @@ import api from '../../server/api';
 
 export default function Cadastrosaida() {
     const navigate = useNavigate();
-  
+
     const [id_produto, setId_produto] = useState("");
     const [produto, setProduto] = useState([]);
     const [quantidade, setQuantidade] = useState("");
     const [valor_unitario, setValor_Unitario] = useState("");
     const [data_saida, setData_Saida] = useState("");
 
-    const [qtd_estoque,setQtd_estoque] =useState(0);
+    const [qtd_estoque, setQtd_estoque] = useState(0);
 
     const saida = {
         id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
@@ -27,16 +27,17 @@ export default function Cadastrosaida() {
         valor_unitario,
         data_saida
     };
-      useEffect(()=>{
-      
-         mostrarproduto();
-      },[])
-      useEffect(()=>{
-        api.get(`/estoque/${id_produto}`).then((res)=>{
+    useEffect(() => {
+
+        mostrarproduto();
+        
+    }, [])
+    useEffect(() => {
+        api.get(`/estoque/${id_produto}`).then((res) => {
             setQtd_estoque(res.data.estoques[0].quantidade)
         })
-      },[id_produto])
-      
+    }, [id_produto])
+
     function salvarDados(e) {
         e.preventDefault();
         let i = 0;
@@ -49,33 +50,33 @@ export default function Cadastrosaida() {
         else if (data_saida === "" || data_saida === 0)
             i++;
         if (i === 0) {
-           // const banco = JSON.parse(localStorage.getItem("cd-saidas") || "[]");
-           // banco.push(Saida);
-          //  localStorage.setItem("cd-saidas", JSON.stringify(banco));
+            // const banco = JSON.parse(localStorage.getItem("cd-saidas") || "[]");
+            // banco.push(Saida);
+            //  localStorage.setItem("cd-saidas", JSON.stringify(banco));
             // Aqui você pode adicionar qualquer lógica adicional, como a atualização do estoque, se necessário
 
             //alert("Saída salva com sucesso");
 
             api.post('/saida', saida, { headers: { "content-type": "application/json" } })
-            .then(function(response){
-                console.log(response.data);
-                alert(response.data.mensagem);
-                navigate('/listasaida');
-            })
-            .catch(function(error) {
-                console.error('Erro ao salvar a saída:', error);
-                alert('Erro ao salvar a saída');
-            });
+                .then(function (response) {
+                    console.log(response.data);
+                    alert(response.data.mensagem);
+                    navigate('/listasaida');
+                })
+                .catch(function (error) {
+                    console.error('Erro ao salvar a saída:', error);
+                    alert('Erro ao salvar a saída');
+                });
         }
     }
-    function mostrarproduto(){
+    function mostrarproduto() {
 
         api.get("/estoque")
-        .then((resposta)=>{
-           setProduto(resposta.data.estoques)
-        })
+            .then((resposta) => {
+                setProduto(resposta.data.estoques)
+            })
     }
- 
+
     return (
         <div className="dashboard-container">
             <div className='menu'>
@@ -87,16 +88,12 @@ export default function Cadastrosaida() {
                 <div className='form-container'>
                     <form className='form-cadastro' onSubmit={salvarDados}>
                         <input type='text' value={id_produto} onChange={e => setId_produto(e.target.value)} placeholder="Digite o ID do produto" />
-                        <select value={id_produto} onChange={e=>setId_produto(e.target.value)}  >
-                <option>Selecione um produto</option>
-                {
-                  produto.map((linha)=>{
-                    return(
-                      <option value={linha.id_produto}>{linha.descricao}</option>
-                    )
-                  })
-                }
-              </select>
+                        <select value={id_produto} onChange={e => setId_produto(e.target.value)}  >
+                            <option>Selecione um produto</option>
+                            {produto && produto.map((linha) => (
+                                <option value={linha.id_produto}>{linha.descricao}</option>
+                            ))}
+                        </select>
                         <input type='text' value={quantidade} onChange={e => setQuantidade(e.target.value)} placeholder="Digite a quantidade do produto" />
                         <input type='number' value={valor_unitario} onChange={e => setValor_Unitario(e.target.value)} placeholder="Digite o valor unitário do produto" />
                         <input type='date' value={data_saida} onChange={e => setData_Saida(e.target.value)} />
@@ -116,4 +113,4 @@ export default function Cadastrosaida() {
         </div>
     );
 
-            }
+}

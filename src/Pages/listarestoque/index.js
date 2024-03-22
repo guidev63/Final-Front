@@ -80,11 +80,13 @@ const navigate=useNavigate();
 
    return(
     <div className="dashboard-container">
-      
-        <div className='menu'>
-        <Menu />
+       <div className='menu'>
+                <h1>  </h1>
+                <Menu />
+            </div>
+       
 
-        </div>
+        
         <div className='principal'>
         <Head title="Lista de Estoque de Produtos" />
         <div>

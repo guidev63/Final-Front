@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './style.css';
-import Logo from '../../assets/img/logo.jpg';
+import Logo from '../../assets/img/papelaria.jpg.png';
 import { useNavigate } from 'react-router-dom';
 import api from '../../server/api';
 
@@ -40,8 +40,11 @@ export default function Logon() {
       <div className="logo">
         <img src={Logo} alt="Logo" />
       </div>
-      <section className="form">
-        <h1>Faça seu login</h1>
+      <section 
+      
+      className="form">
+        <h1>Faça seu login:</h1>
+        
         <form onSubmit={logar}>
           <input
             type="email"
@@ -58,7 +61,7 @@ export default function Logon() {
             required
           />
           <button type="submit">Entrar</button>
-          <a href="#">Novo Cadastro</a>
+          <a href="#"></a>
         </form>
       </section>
     </div>

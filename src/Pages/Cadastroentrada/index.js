@@ -105,7 +105,7 @@ export default function Cadastroentrada() {
         <div className="dashboard-container">
 
             <div className='menu'>
-                <h1>  menu</h1>
+                <h1>  </h1>
                 <Menu />
 
             </div>

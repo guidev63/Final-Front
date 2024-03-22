@@ -7,6 +7,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import { Link } from 'react-router-dom';
 import Head from '../../componentes/head';
 import api from '../../server/api';
+import moment from 'moment';
 
 export default function Listasaida() {
     const [banco, setBanco] = useState([]);
@@ -26,7 +27,10 @@ export default function Listasaida() {
       
     }
     
-    
+    function formatarData(data) {
+        return moment(data).format('DD/MM/YYYY');
+      }
+
     function apagar(id) {
         confirmAlert({
             title: 'Excluir Saída',
@@ -35,10 +39,19 @@ export default function Listasaida() {
                 {
                     label: 'Sim',
                     onClick: () => {
-                        let dadosNovos = banco.filter(item => item.id !== id);
-                        localStorage.setItem("cd-saidas", JSON.stringify(dadosNovos));
-                        setBanco(dadosNovos);
+                       /// let dadosNovos = banco.filter(item => item.id !== id);
+                      //  localStorage.setItem("cd-saidas", JSON.stringify(dadosNovos));
+                       // setBanco(dadosNovos);
+                       api.delete(`/produto/${id}`)
+                        .then(res=>{
+                            if(res.status==200){
+                                alert(`Você apagou o saida id:${id}`);
+                                mostrarDados();
+                            }else{
+                                alert("vish  deu B.O no servidor")
+                            }
                         alert(`Você apagou uma saída id:${id}`);
+                    })
                     }
                 },
                 {
@@ -52,7 +65,7 @@ export default function Listasaida() {
     return (
         <div className="dashboard-container">
             <div className='menu'>
-                <h1> menu </h1>
+                <h1>  </h1>
                 <Menu />
             </div>
             <div className='principal'>
@@ -78,7 +91,7 @@ export default function Listasaida() {
                                 <td>{linha.descricao}</td>
                                 <td>{linha.quantidade}</td>
                                 <td>{linha.valor_unitario}</td>
-                                <td>{linha.data_saida}</td>
+                                <td>{formatarData(linha.data_saida)}</td>
                                 <td className='botoes'>
                                     <FiTrash
                                         size={18}

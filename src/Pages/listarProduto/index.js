@@ -32,30 +32,36 @@ export default function Listarproduto() {
     }
    
 
-
     const apagar = (id) => {
         confirmAlert({
             title: 'Excluir Produto',
-            message: 'Deseja Realmente Excluir esse Produto?',
+            message: 'Deseja realmente excluir esse Produto?',
             buttons: [
                 {
                     label: 'Sim',
                     onClick: () => {
-                        let dadosnovos = banco.filter(item => item.id !== id);
-                        localStorage.setItem("cd-produto", JSON.stringify(dadosnovos));
-                        setBanco(dadosnovos);
-                        alert(`Você apagou o Produto id:${id}`);
+                        api.delete(`/produtos/${id}`)
+                            .then(response => {
+                                if (response.status === 200) {
+                                    alert(`Produto com ID ${id} excluído com sucesso.`);
+                                    mostrardados(); // Atualizar a lista após exclusão
+                                } else {
+                                    alert('Houve um erro ao excluir o produto.');
+                                }
+                            })
+                            .catch(error => {
+                                alert('Houve um erro ao excluir o produto.');
+                            });
                     }
-
                 },
                 {
                     label: 'Não',
-                    onClick: () => alert('Click No')
+                    onClick: () => {} // Ação ao clicar em "Não" (opcional)
                 }
             ]
         });
     };
-
+    
     
     return (
 
@@ -63,7 +69,7 @@ export default function Listarproduto() {
 
 
             <div className='menu'>
-                <h1>menu</h1>
+                <h1></h1>
                 <Menu />
             </div>
             <div className='principal'>

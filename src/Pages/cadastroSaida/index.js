@@ -30,7 +30,7 @@ export default function Cadastrosaida() {
     useEffect(() => {
 
         mostrarproduto();
-        
+
     }, [])
     useEffect(() => {
         api.get(`/estoque/${id_produto}`).then((res) => {
@@ -80,7 +80,7 @@ export default function Cadastrosaida() {
     return (
         <div className="dashboard-container">
             <div className='menu'>
-                <h1>Menu</h1>
+                <h1></h1>
                 <Menu />
             </div>
             <div className='principal'>

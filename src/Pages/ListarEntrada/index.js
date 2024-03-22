@@ -24,17 +24,17 @@ export default function Listaentrada() {
   }, [])
 
   function mostrardados() {
-   // setBanco(JSON.parse(localStorage.getItem("cd-entradas") || "[]"));
-   api.get('/entrada')
-        .then(res => {
-          console.log(res.data.entradas)
-          setBanco(res.data.entradas)
-        })
+    // setBanco(JSON.parse(localStorage.getItem("cd-entradas") || "[]"));
+    api.get('/entrada')
+      .then(res => {
+        console.log(res.data.entradas)
+        setBanco(res.data.entradas)
+      })
   }
 
-function formatarData(data){
-  return moment(data).format('DD/MM/YYYY');
-}
+  function formatarData(data) {
+    return moment(data).format('DD/MM/YYYY');
+  }
   const apagar = (id) => {
     confirmAlert({
       title: 'Excluir Entrada',
@@ -43,9 +43,39 @@ function formatarData(data){
         {
           label: 'Sim',
           onClick: () => {
-            let dadosnovos = banco.filter(item => item.id !== id);
-            localStorage.setItem("cd-entradas", JSON.stringify(dadosnovos));
-            setBanco(dadosnovos); // Atualiza o estado com os dados filtrados
+            // let dadosnovos = banco.filter(item => item.id !== id);
+            // localStorage.setItem("cd-entradas", JSON.stringify(dadosnovos));
+            // setBanco(dadosnovos); // Atualiza o estado com os dados filtrados
+            const apagar = (id) => {
+              confirmAlert({
+                title: 'Excluir Entrada',
+                message: 'Deseja realmente excluir esta Entrada?',
+                buttons: [
+                  {
+                    label: 'Sim',
+                    onClick: () => {
+                      api.delete(`/entradas/${id}`)
+                        .then(response => {
+                          if (response.status === 200) {
+                            alert(`Entrada com ID ${id} excluída com sucesso.`);
+                            mostrardados(); // Atualizar a lista após exclusão
+                          } else {
+                            alert('Houve um erro ao excluir a entrada.');
+                          }
+                        })
+                        .catch(error => {
+                          alert('Houve um erro ao excluir a entrada.');
+                        });
+                    }
+                  },
+                  {
+                    label: 'Não',
+                    onClick: () => { } // Ação ao clicar em "Não" (opcional)
+                  }
+                ]
+              });
+            };
+
             alert(`Você apagou uma entrada  id:${id}`);
           }
 
@@ -57,24 +87,24 @@ function formatarData(data){
       ]
     });
   };
-   function mostrarnome(id_produto) {
+  function mostrarnome(id_produto) {
     let nome = "";
     //const listarProduto = (JSON.parse(localStorage.getItem("cd-produto") || "[]"));
     //listarProduto.
     //  filter(value => value.id == id_produto).
-     // map(value =>{
+    // map(value =>{
 
-      //  nome = value.descricao;
-      api.get(`/produtos/${id_produto}`)
+    //  nome = value.descricao;
+    api.get(`/produtos/${id_produto}`)
       .then(res => {
-    
+
         //setBanco(res.data.produtos)
         console.log(res.data.produto[0].descricao)
         nome = res.data.produto[0].descricao;
         return nome;
-      
+
       })
-      return nome;
+    return nome;
 
     //  })
 
@@ -87,7 +117,7 @@ function formatarData(data){
 
 
       <div className='menu'>
-        <h1> menu </h1>
+        <h1>  </h1>
         <Menu />
       </div>
       <div className='principal'>

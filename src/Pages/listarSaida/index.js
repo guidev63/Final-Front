@@ -27,11 +27,11 @@ export default function Listasaida() {
       
     }
     
-    function formatarData(data) {
+    function formatarData(data){
         return moment(data).format('DD/MM/YYYY');
       }
 
-    function apagar(id) {
+    function apagar(id){
         confirmAlert({
             title: 'Excluir Saída',
             message: 'Deseja realmente excluir essa Saída?',
@@ -42,7 +42,7 @@ export default function Listasaida() {
                        /// let dadosNovos = banco.filter(item => item.id !== id);
                       //  localStorage.setItem("cd-saidas", JSON.stringify(dadosNovos));
                        // setBanco(dadosNovos);
-                       api.delete(`/produto/${id}`)
+                       api.delete(`/saida/${id}`)
                         .then(res=>{
                             if(res.status==200){
                                 alert(`Você apagou o saida id:${id}`);

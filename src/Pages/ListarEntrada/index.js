@@ -35,6 +35,7 @@ export default function Listaentrada() {
   function formatarData(data) {
     return moment(data).format('DD/MM/YYYY');
   }
+  
   const apagar = (id) => {
     confirmAlert({
       title: 'Excluir Entrada',
@@ -43,40 +44,27 @@ export default function Listaentrada() {
         {
           label: 'Sim',
           onClick: () => {
-            // let dadosnovos = banco.filter(item => item.id !== id);
-            // localStorage.setItem("cd-entradas", JSON.stringify(dadosnovos));
-            // setBanco(dadosnovos); // Atualiza o estado com os dados filtrados
-            const apagar = (id) => {
-              confirmAlert({
-                title: 'Excluir Entrada',
-                message: 'Deseja realmente excluir esta Entrada?',
-                buttons: [
-                  {
-                    label: 'Sim',
-                    onClick: () => {
-                      api.delete(`/entradas/${id}`)
-                        .then(response => {
-                          if (response.status === 200) {
-                            alert(`Entrada com ID ${id} excluída com sucesso.`);
-                            mostrardados(); // Atualizar a lista após exclusão
-                          } else {
-                            alert('Houve um erro ao excluir a entrada.');
-                          }
-                        })
-                        .catch(error => {
-                          alert('Houve um erro ao excluir a entrada.');
-                        });
-                    }
-                  },
-                  {
-                    label: 'Não',
-                    onClick: () => { } // Ação ao clicar em "Não" (opcional)
-                  }
-                ]
-              });
-            };
 
-            alert(`Você apagou uma entrada  id:${id}`);
+           // let dadosnovos = banco.filter(item => item.id !== id);
+           // localStorage.setItem("cd-entradas", JSON.stringify(dadosnovos));
+           // setBanco(dadosnovos); // Atualiza o estado com os dados filtrados
+           
+           api.delete(`/entrada/${id}`)
+           .then(res => {
+             if (res.status == 200) {
+               alert(`Você apagou a entrada id:${id}`);
+               mostrardados();
+             } else {
+               alert("vish  deu B.O no servidor")
+             }
+
+           })
+           . catch(error =>{
+            console.error("erro ao excluir a entrada",error)
+            alert("vish  deu B.O no servidor")
+           })
+           
+            
           }
 
         },

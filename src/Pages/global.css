@@ -23,7 +23,7 @@ body {
     width: 20%;
     background-color: #ffffff;
     margin: 5px;
-    background-image: url(/src/assets/img/5799725.jpg);
+   
     transition: background-color 0.3s ease; /* Adicionando transição de cor */
 }
 
@@ -32,7 +32,7 @@ body {
     background-color: #ffffff;
     margin: 5px;
     padding: 5px;
-    background-image: url(/src/assets/img/5799725.jpg);
+   
     transition: background-color 0.3s ease; /* Adicionando transição de cor */
 }
 

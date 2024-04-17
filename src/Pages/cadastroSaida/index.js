@@ -34,7 +34,7 @@ export default function Cadastrosaida() {
     }, [])
     useEffect(() => {
         api.get(`/estoque/${id_produto}`).then((res) => {
-            setQtd_estoque(res.data.estoques[0].quantidade)
+            setQtd_estoque(res.data.estoque.quantidade)
         })
     }, [id_produto])
 
@@ -73,7 +73,8 @@ export default function Cadastrosaida() {
 
         api.get("/estoque")
             .then((resposta) => {
-                setProduto(resposta.data.estoques)
+                setProduto(resposta.data.estoque)
+             
             })
     }
 
@@ -89,7 +90,7 @@ export default function Cadastrosaida() {
                     <form className='form-cadastro' onSubmit={salvarDados}>
                         <input type='text' value={id_produto} onChange={e => setId_produto(e.target.value)} placeholder="Digite o ID do produto" />
                         <select value={id_produto} onChange={e => setId_produto(e.target.value)}  >
-                            <option>Selecione um produto</option>
+                            <option value=""> Selecione um produto</option>
                             {produto && produto.map((linha) => (
                                 <option value={linha.id_produto}>{linha.descricao}</option>
                             ))}
@@ -102,7 +103,7 @@ export default function Cadastrosaida() {
                                 <FiSave />
                                 Salvar
                             </button>
-                            <button className='btn-cancel' onClick={() => navigate('/listasaida')}>
+                            <button className='btn-cancel' onClick={() => navigate('/listarsaida')}>
                                 <MdOutlineCancel />
                                 Cancelar
                             </button>

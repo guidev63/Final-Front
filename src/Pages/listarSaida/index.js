@@ -21,8 +21,8 @@ export default function Listasaida() {
       //  setBanco(saida);
       api.get('/saida')
       .then(res => {
-        console.log(res.data.produtos)
-        setBanco(res.data.produtos)
+        console.log(res.data.saidas)
+        setBanco(res.data.saidas)
       })
       
     }

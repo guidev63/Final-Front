@@ -22,17 +22,17 @@ const navigate=useNavigate();
       mostrardados();
     },[])
  
-    function formatReal(valor) {
-      let valorFormatado = valor.replace(/\D/g, ''); // Remove caracteres não numéricos
-      valorFormatado = valorFormatado.replace(/(\d{2})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3,$4'); // Formata com pontos e vírgulas
-      return `R$ ${valorFormatado}`;
-    }
+    // function formatReal(valor) {
+    //   let valorFormatado = valor.replace(/\D/g, ''); // Remove caracteres não numéricos
+    //   valorFormatado = valorFormatado.replace(/(\d{2})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3,$4'); // Formata com pontos e vírgulas
+    //   return `R$ ${valorFormatado}`;
+    // }
 
     function mostrardados() {
       api.get("/estoque")
           .then((res) => {
-              if (res.data.estoques) {
-                  setBanco(res.data.estoques);
+              if (res.data.estoque) {
+                  setBanco(res.data.estoque);
               } else {
                   console.error('Dados de estoque não encontrados na resposta:', res);
               }
@@ -41,19 +41,19 @@ const navigate=useNavigate();
               console.error('Erro ao buscar dados do estoque:', error);
           });
   }
-    function mostrarnome(idproduto){
-      let nome= "";
-       const listarproduto = JSON.parse(localStorage.getItem("cd-produto") || "[]");
-       listarproduto.
-                    filter(value => value.id ==idproduto).
-                    map(value => {
+    // function mostrarnome(idproduto){
+    //   let nome= "";
+    //   //  const listarproduto = JSON.parse(localStorage.getItem("cd-produto") || "[]");
+    //    listarproduto.
+    //                 filter(value => value.id ==idproduto).
+    //                 map(value => {
                      
-                    nome=value.descricao;
+    //                 nome=value.descricao;
                         
-                  })
-            return nome;
+    //               })
+    //         return nome;
             
-      }
+    //   }
      const  apagar = (id) => {
       confirmAlert({
         title: 'Excluir Estoque',
@@ -62,9 +62,9 @@ const navigate=useNavigate();
           {
             label: 'Sim',
             onClick: () => {
-              let dadosnovos = banco.filter(item => item.id !== id);
-              localStorage.setItem("cd-estoques", JSON.stringify(dadosnovos));
-              setBanco(dadosnovos); // Atualiza o estado com os dados filtrados
+              // let dadosnovos = banco.filter(item => item.id !== id);
+              // localStorage.setItem("cd-estoques", JSON.stringify(dadosnovos));
+              // setBanco(dadosnovos); // Atualiza o estado com os dados filtrados
               alert(`Você apagou o Estoque id:${id}`);
             }
             
@@ -90,7 +90,7 @@ const navigate=useNavigate();
         <div className='principal'>
         <Head title="Lista de Estoque de Produtos" />
         <div>
-        <Link to="/cadastroproduto" className='btn-novo'>Novo Cadastro</Link>
+      
         </div>
         <table className="table">
            <tr>
@@ -114,16 +114,9 @@ const navigate=useNavigate();
          
                     <td className='botoes'> 
                     <Link to={`/editarproduto/${linha.id}`}>
-                      <FiEdit size={18} color='#3a5795'  /> 
                     </Link> 
                     </td>    
-                    <td className='botoes'> 
-                          <FiTrash 
-                          size={18} 
-                          color='red'
-                          onClick={(e)=>apagar(linha.id)} 
-                          /> 
-                    </td>    
+                      
                     
                   </tr>  
                 )

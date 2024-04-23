@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
 import '../../Pages/global.css';
-import Menu from '../../componentes/menu'
+import Menu from '../../componentes/menu';
 import { FiFilePlus } from "react-icons/fi";
 import { MdCancel } from "react-icons/md";
 import { FaSave } from "react-icons/fa";
@@ -15,83 +14,48 @@ export default function Editarusuario() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [banco, setBanco] = useState([]);
-  const [status, setStatus] = useState(true);   
+  const [status, setStatus] = useState(true);
 
-  const usuario = {
-    id,
-    nome,
-    email,
-    senha
-  }
   useEffect(() => {
-
     mostrardados(id);
+  }, []);
 
-
-
-  }, [])
   async function mostrardados(idu) {
-   // let listaUser = JSON.parse(localStorage.getItem("cd-usuarios"));
-
-   // listaUser.
-    //  filter(value => value.id == idu).
-     // map(value => {
-      //  setNome(value.nome);
-      //  setEmail(value.email);
-      //  setSenha(value.senha);
-
-
-    //  })
-          api.get(`/usuario/${idu}`)
-          .then(res=>{
-            console.log(res.data.usuario);
-            if(res.status===200){
-              setNome(res.data.usuario[0].nome);
-              setEmail(res.data.usuario[0].email);
-              setSenha (res.data.usuario[0].senha);
-
-            }
-          })
+    try {
+      const response = await api.get(`/usuario/${idu}`);
+      if (response.status === 200 && response.data.usuario.length > 0) {
+        const usuario = response.data.usuario[0];
+        setNome(usuario.nome);
+        setEmail(usuario.email);
+        setSenha(usuario.senha);
+      }
+    } catch (error) {
+      console.error("Erro ao obter dados do usuário:", error);
+    }
   }
-
 
   function salvardados(e) {
     e.preventDefault();
 
-    let i = 0;
-    if (nome == "")
-      i++;
-    else if (email == "")
-      i++;
-    else if (senha == "")
-      i++;
-    if (i == 0) 
-    {
-      // const banco = JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
-      // let dadosnovos = banco.filter(item => item.id !== id);
-      // console.log(dadosnovos);
-      // dadosnovos.push(usuario);
-      // localStorage.setItem("cd-usuarios", JSON.stringify(dadosnovos));
-      // alert("Usuário salvo com sucesso");
-      api.put('/usuario',usuario,
-      {headers:{"content-type":"application/json"}})
-          .then(function(response){
-           console.log(response.data)
-           alert(response.data.mensagem);
-           navigate('/listausuario');
-          })
-
-    }else{
-      alert("Verifique! Há campos vazios!")
+    if (nome === "" || email === "" || senha === "") {
+      alert("Verifique! Há campos vazios!");
+    } else {
+      const usuario = { id: Number(id), nome, email, senha };
+      api.put('/usuario', usuario, { headers: { "content-type": "application/json" } })
+        .then(function (response) {
+          console.log(response.data);
+          alert(response.data.mensagem);
+          navigate('/listausuario');
+        })
+        .catch(function (error) {
+          console.error("Erro ao salvar dados do usuário:", error);
+        });
     }
   }
 
   return (
     <div className="dashboard-container">
-
       <div className='menu'>
-
         <Menu />
       </div>
       <div className='principal'>
@@ -116,22 +80,19 @@ export default function Editarusuario() {
               onChange={e => setSenha(e.target.value)}
               placeholder='Digite a senha'
             />
-
             <div className='acao'>
-              <button className='btn-save'>
+              <button type="submit" className='btn-save'>
                 <FaSave />
                 Salvar
               </button>
-              <button className='btn-cancel'>
+              <button type="button" className='btn-cancel' onClick={() => navigate('/listausuario')}>
                 <MdCancel />
-                Cancelar</button>
+                Cancelar
+              </button>
             </div>
           </form>
-
         </div>
       </div>
     </div>
-
-  )
-
+  );
 }

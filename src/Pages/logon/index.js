@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import './style.css';
 import Logo from '../../assets/img/papelaria.jpg.png';
 import { useNavigate } from 'react-router-dom';
+
 import api from '../../server/api';
+
+
+
 
 export default function Logon() {
   const navigate = useNavigate();
@@ -20,7 +24,7 @@ export default function Logon() {
     // } else {
     //   alert("Dados incorretos!!!");
     // }
-    api.post("usuario/login", { email, senha })
+    api.post("usuario/login", { email, senha }) 
       .then(res => {
         console.log(res.status)
         if (res.status === 200) {
@@ -41,7 +45,7 @@ export default function Logon() {
         <img src={Logo} alt="Logo" />
       </div>
       <section 
-      
+
       className="form">
         <h1>Faça seu login:</h1>
         
@@ -55,15 +59,21 @@ export default function Logon() {
           />
           <input
             type="password"
+            
             placeholder="Senha"
+            
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
+            
             required
+            
           />
+          
           <button type="submit">Entrar</button>
           <a href="#"></a>
         </form>
       </section>
     </div>
+
   );
 }

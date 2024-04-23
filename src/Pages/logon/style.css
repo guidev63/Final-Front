@@ -52,8 +52,9 @@ button {
     color: #fff; /* Cor do texto */
     border: none; /* Remove a borda */
     padding: 10px 20px; /* Espaçamento interno */
-    border-radius: 10px; /* Raio da borda */
+    border-radius: 20px; /* Agora o botão será redondo, ajuste o valor conforme necessário */
     cursor: pointer; /* Cursor ao passar por cima */
     font-size: 16px; /* Tamanho da fonte */
     transition: background-color 0.3s; /* Transição suave da cor de fundo */
+    margin-top: 10px; /* Adiciona uma margem no topo do botão para afastá-lo dos campos de entrada */
 }

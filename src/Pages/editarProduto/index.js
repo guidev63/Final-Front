@@ -63,11 +63,11 @@ export default function Editarproduto() {
     else if (estoque_minimo == 0 || estoque_minimo=="")
       i++;
     if (i == 0) {
-      const banco = JSON.parse(localStorage.getItem("cd-produto") || "[]");
-      let dadosnovos = banco.filter(item => item.id !== id);
-      console.log(dadosnovos);
-      dadosnovos.push(produto);
-      localStorage.setItem("cd-produto", JSON.stringify(dadosnovos));
+    //  const banco = JSON.parse(localStorage.getItem("cd-produto") || "[]");
+    //  let dadosnovos = banco.filter(item => item.id !== id);
+    //  console.log(dadosnovos);
+     // dadosnovos.push(produto);
+      //localStorage.setItem("cd-produto", JSON.stringify(dadosnovos));
       alert("Produto salvo com sucesso");
       navigate('/listarproduto');
     } else {

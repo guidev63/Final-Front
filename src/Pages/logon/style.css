@@ -1,5 +1,4 @@
 .logon-container {
-
     width: 100%;
     height: 100%;
 }
@@ -14,34 +13,29 @@ form {
 h1 {
     text-align: center;
     color: #333;
-    /* Cor do texto */
     font-size: 24px;
-    /* Tamanho da fonte */
     margin-bottom: 20px;
-    /* Espaçamento inferior */
 }
 
 input {
     border: 1px solid #ccc;
     padding: 10px;
     margin: 5px 0;
-    border-radius: 20px; /* Aumentando o valor do border-radius para deixar mais redondo */
-    height: 15px; /* Ajustando a altura dos inputs */
+    border-radius: 20px;
     font-size: 16px;
     transition: border-color 0.3s;
+    width: calc(100% - 40px); /* Ajuste a largura dos inputs */
 }
-
 
 img {
     width: 380px;
-
 }
 
 .logo {
     display: flex;
     justify-content: center;
 }
- 
+
 button {
     background-color: #007bff;
     color: #fff;
@@ -52,16 +46,35 @@ button {
     font-size: 16px;
     transition: background-color 0.3s;
     margin-top: 10px;
-    height: 40px; /* Ajustando a altura dos botões para combinar com os inputs */
+    height: 40px;
+    width: 100%; /* Defina a largura do botão como 100% */
 }
+
 button:active {
-    background-color: #004080; /* Cor bem mais escura */
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); /* Sombra mais intensa */
-    transform: scale(0.95); /* Diminuir o tamanho em 5% */
-  }
-  .link-container {
-    display: flex; /* Enable flexbox */
-    justify-content: center; /* Center items horizontally */
-    align-items: center; /* Center items vertically (optional) */
-  }
-  
+    background-color: #004080;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    transform: scale(0.95);
+}
+
+.link-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon input[type="email"],
+.input-with-icon input[type="password"] {
+    padding-left: 40px;
+    width: calc(100% - 40px); /* Ajuste a largura dos inputs */
+}
+
+.input-with-icon .input-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}

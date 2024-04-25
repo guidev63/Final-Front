@@ -16,7 +16,7 @@ export default function Head({title}){
    }
   const confirmarsaida=()=> {
       confirmAlert({
-          message: "Deseja realmente sair?",
+          message: "Você está plenamente convencido de que quer sair  ?",
           buttons: [
          {
              label: 'Sim',

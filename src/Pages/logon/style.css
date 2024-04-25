@@ -54,3 +54,14 @@ button {
     margin-top: 10px;
     height: 40px; /* Ajustando a altura dos botões para combinar com os inputs */
 }
+button:active {
+    background-color: #004080; /* Cor bem mais escura */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); /* Sombra mais intensa */
+    transform: scale(0.95); /* Diminuir o tamanho em 5% */
+  }
+  .link-container {
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically (optional) */
+  }
+  

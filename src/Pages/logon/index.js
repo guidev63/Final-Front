@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './style.css';
 import Logo from '../../assets/img/papelaria.jpg.png';
 import { useNavigate } from 'react-router-dom';
-import { MdEmail, MdLock } from "react-icons/md"; // Importe os ícones de e-mail e senha
+import { FaUser, FaKey } from "react-icons/fa"; // Importe os ícones de usuário e chave do Font Awesome
 
 import api from '../../server/api';
 
@@ -32,7 +32,7 @@ export default function Logon() {
         <img src={Logo} alt="Logo" />
       </div>
       <section className="form">
-        <h1>Bem vindo(a)</h1>
+        <h1 >Bem vindo(a)</h1>
         <form onSubmit={logar}>
           <div className="input-with-icon">
             <input
@@ -42,7 +42,7 @@ export default function Logon() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <MdEmail className="input-icon" />
+            <FaUser className="input-icon" /> {/* Use o ícone FaUser aqui */}
           </div>
           <div className="input-with-icon">
             <input
@@ -52,7 +52,7 @@ export default function Logon() {
               onChange={(e) => setSenha(e.target.value)}
               required
             />
-            <MdLock className="input-icon" />
+            <FaKey className="input-icon" /> {/* Use o ícone FaKey aqui */}
           </div>
           <button type="submit"> Acessar </button>
           <div className="link-container">

@@ -60,8 +60,8 @@ export default function Listaentrada() {
                 <table className="table">
                     <tr>
                         <th>Id</th>
-                        <th>ID_PRODUTO</th>
-                        <th>PRODUTO</th>
+                        <th>Id Produto</th>
+                        <th>Produto</th>
                         <th>Quantidade</th>
                         <th>Valor Unitário</th>
                         <th>Data de Entrada</th>

@@ -95,8 +95,8 @@ const navigate=useNavigate();
         <table className="table">
            <tr>
                 <th>Id</th>
-                <th>id_produto</th>
-                <th>produto</th>
+                <th>Id Produto</th>
+                <th>Produto</th>
                 <th>Quantidade</th>
                 <th>Valor Unitário</th>
                 <th></th>

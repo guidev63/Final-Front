@@ -12,7 +12,9 @@ import Head from '../../componentes/head';
 import api from '../../server/api';
 
 
+
 //fiz alteração aqui
+
 
 export default function Cadastroentrada() {
     const navigate = useNavigate();

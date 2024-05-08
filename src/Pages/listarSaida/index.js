@@ -78,8 +78,8 @@ export default function Listasaida() {
                             <th>ID </th>
                             <th>Produto</th>
                             <th>Quantidade</th>
-                            <th>valor unitario</th>
-                            <th>data saida</th>
+                            <th>Valor Unitario</th>
+                            <th>Data Saida</th>
                             <th></th>
 
                         </tr>

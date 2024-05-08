@@ -26,7 +26,8 @@ export default function Rotas() {
                 <Route path="/listarproduto" element={<Listarproduto />} />
                 <Route path="/listarestoque" element={<Listarestoque />} />
                 <Route path="/listasaida" element={<Listasaida />} />
-                
+                <Route path="/listarentrada" element={<Listarentrada />} /> {/* Added this line */}
+
                 <Route path="/cadastrousuario" element={<Cadastrousuario />} />
                 <Route path="/cadastroproduto" element={<Cadastroproduto />} />
                 <Route path="/cadastroentrada" element={<Cadastroentrada />} />
@@ -36,8 +37,7 @@ export default function Rotas() {
                 <Route path="/editarproduto/:id" element={<Editarproduto />} />
 
                 <Route path="/entrada_Produto" element={<EntradaProduto />} />
-                <Route path="/listarentrada" element={<Listarentrada />} /> {/* Added this line */}
-
+                
 
             </Routes>
         </BrowserRouter>

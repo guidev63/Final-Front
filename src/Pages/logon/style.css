@@ -34,10 +34,15 @@ img {
 .logo {
     display: flex;
     justify-content: center;
+    align-items: center; /* Adicione esta linha */
+}
+.logo img {
+    width: auto; /* Remova esta linha se desejar manter o tamanho original */
+    max-width: 55%; /* Adicione esta linha para garantir que a imagem não ultrapasse seu contêiner */
 }
 
 button {
-    background-color: #007bff;
+    background-color: #38B6FF;
     color: #fff;
     border: none;
     padding: 10px 20px;

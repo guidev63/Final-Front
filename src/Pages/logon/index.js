@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './style.css';
-import Logo from '../../assets/img/papelaria.jpg.png';
+import Logo from '../../assets/img/Service Car Logo.png';
 import { useNavigate } from 'react-router-dom';
 import { FaUser, FaKey, FaSpinner } from "react-icons/fa"; // Importe os ícones de usuário, chave e spinner do Font Awesome
 

@@ -11,9 +11,12 @@ import Cadastroproduto from './Pages/CadastrodeProduto';
 import Cadastroentrada from './Pages/Cadastroentrada';
 import Listasaida from './Pages/listarSaida';
 import EntradaProduto from './Pages/Cadastroentrada';
+import ListaClientes from './Pages/listarClientes';
 
 import Listarentrada from './Pages/ListarEntrada';
 import Listarestoque from './Pages/listarestoque';
+import CadastroCliente from './Pages/CadastrodeClientes';
+
 
 export default function Rotas() {
     return (
@@ -27,12 +30,20 @@ export default function Rotas() {
                 <Route path="/listarestoque" element={<Listarestoque />} />
                 <Route path="/listasaida" element={<Listasaida />} />
                 <Route path="/listarentrada" element={<Listarentrada />} /> {/* Added this line */}
+                <Route path="/listarclientes" element={<ListaClientes />} /> {/* Added this line */}
+                 
 
+                 
+                 
                 <Route path="/cadastrousuario" element={<Cadastrousuario />} />
                 <Route path="/cadastroproduto" element={<Cadastroproduto />} />
                 <Route path="/cadastroentrada" element={<Cadastroentrada />} />
                 <Route path="/cadastrosaida" element={<Cadastrosaida />} />
+                <Route path="/cadastrarcliente" element={<CadastroCliente/>} />
                 
+
+
+
                 <Route path="/editarusuario/:id" element={<Editarusuario />} />
                 <Route path="/editarproduto/:id" element={<Editarproduto />} />
 

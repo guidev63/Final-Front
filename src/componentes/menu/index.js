@@ -16,7 +16,7 @@ export default function Menu() {
                     <BsPerson className='icon' />
                     Usuário
                 </Link>
-                <Link to="/listausuario" className='link'>
+                <Link to="/listarfornecedores" className='link'>
                     <FaTruck className='icon' />
                     Fornecedor
                 </Link>
@@ -24,7 +24,7 @@ export default function Menu() {
                     <FaUserFriends className='icon' />
                     Clientes
                 </Link>
-                <Link to="/listausuario" className='link'>
+                <Link to="/listarservicos" className='link'>
                     <FaTools className='icon' />
                     Serviços
                 </Link>

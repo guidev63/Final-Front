@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import '../../Pages/global.css';
 import Menu from '../../componentes/menu';
-import { FiFilePlus } from "react-icons/fi";
+import { FaSave, FaBan } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
-import { FaSave } from "react-icons/fa";
 import { useNavigate, useParams } from 'react-router-dom';
 import Head from '../../componentes/head';
 import api from '../../server/api';
 
-export default function EditarCliente() {
+export default function EditarFornecedor() {
   let { id } = useParams();
   const navigate = useNavigate();
   const [tipo, setTipo] = useState("");
@@ -29,26 +28,26 @@ export default function EditarCliente() {
     mostrardados(id);
   }, []);
 
-  async function mostrardados(idc) {
+  async function mostrardados(idf) {
     try {
-      const response = await api.get(`/cliente/${idc}`);
-      if (response.status === 200 && response.data.cliente.length > 0) {
-        const cliente = response.data.cliente[0];
-        setTipo(cliente.tipo);
-        setGenero(cliente.genero);
-        setNome(cliente.nome);
-        setCpfcnpj(cliente.cpfcnpj);
-        setEmail(cliente.email);
-        setContato(cliente.contato);
-        setEndereco(cliente.endereco);
-        setSetor(cliente.setor);
-        setCidade(cliente.cidade);
-        setUf(cliente.uf);
-        setCep(cliente.cep);
-        setComplemento(cliente.complemento);
+      const response = await api.get(`/fornecedor/${idf}`);
+      if (response.status === 200 && response.data.fornecedor.length > 0) {
+        const fornecedor = response.data.fornecedor[0];
+        setTipo(fornecedor.tipo);
+        setGenero(fornecedor.genero);
+        setNome(fornecedor.nome);
+        setCpfcnpj(fornecedor.cpfcnpj);
+        setEmail(fornecedor.email);
+        setContato(fornecedor.contato);
+        setEndereco(fornecedor.endereco);
+        setSetor(fornecedor.setor);
+        setCidade(fornecedor.cidade);
+        setUf(fornecedor.uf);
+        setCep(fornecedor.cep);
+        setComplemento(fornecedor.complemento);
       }
     } catch (error) {
-      console.error("Erro ao obter dados do Cliente:", error);
+      console.error("Erro ao obter dados do Fornecedor:", error);
     }
   }
 
@@ -58,15 +57,15 @@ export default function EditarCliente() {
     if (nome === "" || email === "" || cpfcnpj === "" || contato === "" || endereco === "" || setor === "" || cidade === "" || uf === "" || cep === "") {
       alert("Verifique! Há Campos Vazios!");
     } else {
-      const cliente = { id: Number(id), tipo, genero, nome, cpfcnpj, email, contato, endereco, setor, cidade, uf, cep, complemento };
-      api.put('/cliente', cliente, { headers: { "content-type": "application/json" } })
+      const fornecedor = { id: Number(id), tipo, genero, nome, cpfcnpj, email, contato, endereco, setor, cidade, uf, cep, complemento };
+      api.put('/fornecedor', fornecedor, { headers: { "content-type": "application/json" } })
         .then(function (response) {
           console.log(response.data);
           alert(response.data.mensagem);
-          navigate('/listacliente');
+          navigate('/listafornecedores');
         })
         .catch(function (error) {
-          console.error("Erro ao salvar dados do Cliente:", error);
+          console.error("Erro ao salvar dados do Fornecedor:", error);
         });
     }
   }
@@ -77,7 +76,7 @@ export default function EditarCliente() {
         <Menu />
       </div>
       <div className='principal'>
-        <Head title="Editar Cliente" />
+        <Head title="Editar Fornecedor" />
         <div className='form-container'>
           <form className='form-cadastro' onSubmit={salvardados} >
             <input
@@ -96,7 +95,7 @@ export default function EditarCliente() {
               type='text'
               value={nome}
               onChange={e => setNome(e.target.value)}
-              placeholder='Digite o nome do Cliente'
+              placeholder='Digite o nome do Fornecedor'
             />
             <input
               type='text'
@@ -157,7 +156,7 @@ export default function EditarCliente() {
                 <FaSave />
                 Salvar
               </button>
-              <button type="button" className='btn-cancel' onClick={() => navigate('/listacliente')}>
+              <button type="button" className='btn-cancel' onClick={() => navigate('/listafornecedores')}>
                 <MdCancel />
                 Cancelar
               </button>

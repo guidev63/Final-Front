@@ -10,6 +10,7 @@ import { PiListChecksFill } from "react-icons/pi";
 
 
 
+
 export default function Menu() {
     return (
         <div>
@@ -28,34 +29,39 @@ export default function Menu() {
                 </Link>
                 <Link to="/listarchecklist" className='link'>
                     <PiListChecksFill  className='icon' />
-                   Chicklist  veículo
+                   Chicklist  Veículo
                 </Link>
                 <Link to="/listarservicos" className='link'>
                     <FaTools className='icon' />
                     Serviços
                 </Link>
+
                 <Link to="/listarproduto" className='link'>
-                    <FaCar className='icon' /> {/* Substituindo o ícone */}
+                    <FaCar className='icon' /> {}
                     Produto
                 </Link>
                 <Link to="/listarentrada" className='link'>
                     <BsClipboardData className='icon' />
                     Entrada
                 </Link>
+
                 <Link to="/listarestoque" className='link'>
-                    <BsBoxSeam className='icon' /> {/* Substituindo o ícone */}
+                    <BsBoxSeam className='icon' /> {}
                     Estoque
                 </Link>
-                <Link to="/listarestoque" className='link'>
-                    <FaMoneyCheckDollar className='icon' /> {/* Substituindo o ícone */}
-                    Parcelamento
+
+                <Link to="/listarPagamentos" className='link'>
+                    <FaMoneyCheckDollar className='icon' /> {}
+                    Pagamentos 
                 </Link>
-                <Link to="/listarestoque" className='link'>
-                    <BsCart4 className='icon' /> {/* Substituindo o ícone */}
+
+                <Link to="/listarvendas" className='link'>
+                    <BsCart4 className='icon' /> {}
                     Vendas 
                 </Link>
+
                 <Link to="/listarestoque" className='link'>
-                    <FaClipboardList  className='icon' /> {/* Substituindo o ícone */}
+                    <FaClipboardList  className='icon' /> {}
                     Ordens De Serviços 
                 </Link>
 

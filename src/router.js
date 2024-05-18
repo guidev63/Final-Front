@@ -21,12 +21,22 @@ import Listarestoque from './Pages/listarestoque';
 import CadastroCliente from './Pages/CadastrodeClientes';
 import EditarCliente from './Pages/editarClientes';
 import ListaFornecedores from './Pages/listarFornecedores';
+
 import EditarFornecedor from './Pages/editarFornecedores';
+
 import ListaServicos from './Pages/listarServicos';
 import ListaChecklist from './Pages/listarChecklist';
+import ListaVendas from './Pages/listarVendas';
+import ListaPagamentos from './Pages/listarPagamentos';
 import CadastroServico from './Pages/CadastrodeServicos';
+
 import EditarServico from './Pages/editarServicos';
+
 import CadastroChecklist from './Pages/CadastrodeChecklist';
+import CadastroPagamentos from './Pages/CadastrodePagamentos';
+
+
+
 export default function Rotas() {
     return (
         <BrowserRouter>
@@ -40,11 +50,14 @@ export default function Rotas() {
                 <Route path="/listarproduto" element={<Listarproduto />} />
                 <Route path="/listarestoque" element={<Listarestoque />} />
                 <Route path="/listasaida" element={<Listasaida />} />
-                <Route path="/listarentrada" element={<Listarentrada />} /> {/* Added this line */}
-                <Route path="/listarclientes" element={<ListaClientes />} /> {/* Added this line */}
-                <Route path="/listarfornecedores" element={<ListaFornecedores />} /> {/* Added this line */}
-                <Route path="/listarServicos" element={< ListaServicos />} /> {/* Added this line */}
-                <Route path="/listarChecklist" element={< ListaChecklist />} /> {/* Added this line */}
+                <Route path="/listarentrada" element={<Listarentrada />} /> {}
+                <Route path="/listarclientes" element={<ListaClientes />} /> {}
+                <Route path="/listarfornecedores" element={<ListaFornecedores />} /> {}
+                <Route path="/listarServicos" element={< ListaServicos />} /> {}
+                <Route path="/listarChecklist" element={< ListaChecklist />} /> {}
+                <Route path="/listarVendas" element={< ListaVendas />} /> {}
+                <Route path="/listarPagamentos" element={< ListaPagamentos />} /> {}
+     
 
 
 
@@ -59,14 +72,14 @@ export default function Rotas() {
                 <Route path="/cadastrarchecklist" element={<CadastroChecklist />} />
 
 
-
-
+    
 
                 <Route path="/editarfornecedor/:id" element={<EditarFornecedor />} />
                 <Route path="/editarusuario/:id" element={<Editarusuario />} />
                 <Route path="/editarcliente/:id" element={<EditarCliente />} />
                 <Route path="/editarproduto/:id" element={<Editarproduto />} />
                 <Route path="/editarservico/:id" element={<EditarServico />} />
+
 
 
 

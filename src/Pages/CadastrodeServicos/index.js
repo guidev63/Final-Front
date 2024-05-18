@@ -12,13 +12,10 @@ export default function CadastroServico() {
     const [descricao, setDescricao] = useState("");
     const [quantidade, setQuantidade] = useState("");
     const [preco, setPreco] = useState("");
-    const [fornecedor_id, setFornecedorId] = useState("");
-    const [createAt, setCreateAt] = useState("");
-    const [updateAt, setUpdateAt] = useState("");
 
     function handleCadastro(e) {
         e.preventDefault();
-        if (!nome || !descricao || !quantidade || !preco || !fornecedor_id || !createAt || !updateAt) {
+        if (!nome || !descricao || !quantidade || !preco) {
             alert("Preencha todos os Campos Obrigatórios!");
             return;
         }
@@ -26,10 +23,7 @@ export default function CadastroServico() {
             nome,
             descricao,
             quantidade,
-            preco,
-            fornecedor_id,
-            createAt,
-            updateAt
+            preco
         })
             .then(response => {
                 console.log(response.data);
@@ -56,9 +50,6 @@ export default function CadastroServico() {
                         <input type='text' value={descricao} onChange={e => setDescricao(e.target.value)} placeholder='Descrição' />
                         <input type='text' value={quantidade} onChange={e => setQuantidade(e.target.value)} placeholder='Quantidade' />
                         <input type='text' value={preco} onChange={e => setPreco(e.target.value)} placeholder='Preço' />
-                        <input type='text' value={fornecedor_id} onChange={e => setFornecedorId(e.target.value)} placeholder='ID do Fornecedor' />
-                        <input type='text' value={createAt} onChange={e => setCreateAt(e.target.value)} placeholder='Criado em' />
-                        <input type='text' value={updateAt} onChange={e => setUpdateAt(e.target.value)} placeholder='Atualizado em' />
                         <div>
                             <button type="submit" className='btn-save'>
                                 <FaLocationArrow />

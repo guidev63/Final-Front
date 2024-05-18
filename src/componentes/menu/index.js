@@ -6,6 +6,8 @@ import { RiMoneyDollarCircleFill } from 'react-icons/ri'; // Importando o ícone
 import { FaCar, FaTools, FaTruck, FaUserFriends, } from 'react-icons/fa'; // Importando o ícone FaCar
 import { FaMoneyCheckDollar ,FaClipboardList } from "react-icons/fa6";
 import { BsCart4 } from "react-icons/bs";
+import { PiListChecksFill } from "react-icons/pi";
+
 
 
 export default function Menu() {
@@ -23,6 +25,10 @@ export default function Menu() {
                 <Link to="/listarclientes" className='link'>
                     <FaUserFriends className='icon' />
                     Clientes
+                </Link>
+                <Link to="/listarchecklist" className='link'>
+                    <PiListChecksFill  className='icon' />
+                   Chicklist  veículo
                 </Link>
                 <Link to="/listarservicos" className='link'>
                     <FaTools className='icon' />

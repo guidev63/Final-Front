@@ -23,7 +23,6 @@ body {
     width: 20%;
     background-color: #ffffff;
     margin: 5px;
-   
     transition: background-color 0.3s ease; /* Adicionando transição de cor */
 }
 
@@ -32,7 +31,6 @@ body {
     background-color: #ffffff;
     margin: 5px;
     padding: 5px;
-   
     transition: background-color 0.3s ease; /* Adicionando transição de cor */
 }
 
@@ -103,14 +101,12 @@ td {
     color: #f8f8f8;
     margin-right: 45px;
     cursor: pointer;
-
 }
 
 .btn-cancel {
     background-color: red;
     color: #f8f8f8;
     cursor: pointer;
-
 }
 
 .acao {
@@ -135,11 +131,13 @@ td {
     border-radius: 5px;
     transition: background-color 0.3s ease; /* Adicionando transição de cor */
 }
-@media(width <= 768){
-    main{
-        width:100% ;
+
+@media (max-width: 768px) {
+    main {
+        width: 100%;
     }
 }
+
 .cadastro-cliente-form {
     background-color: rgb(255, 255, 255, 0.8);
     border: 1px solid rgb(0, 0, 0, 0.2);
@@ -148,4 +146,45 @@ td {
     padding: 5px;
     border-radius: 5px;
     transition: background-color 0.3s ease; /* Adicionando transição de cor */
+}
+
+textarea {
+    border-radius: 8px; /* Ajuste o valor conforme necessário */
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+    resize: vertical; /* Permite que o usuário ajuste a altura, mas não a largura */
+}
+
+textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Estilos adicionais para o formulário */
+.cadastro-cliente-form input,
+.cadastro-cliente-form textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.cadastro-cliente-form .observacao-textarea {
+    border-radius: 8px; /* Ajuste o valor conforme necessário */
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+    resize: vertical; /* Permite que o usuário ajuste a altura, mas não a largura */
+}
+
+.cadastro-cliente-form .observacao-textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }

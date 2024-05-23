@@ -44,7 +44,7 @@ export default function CadastroCliente() {
             .then(response => {
                 console.log(response.data);
                 alert(response.data.mensagem);
-                navigate('/listaclientes');
+                navigate('/listarclientes');
             })
             .catch(error => {
                 console.error("Erro ao cadastrar cliente:", error);

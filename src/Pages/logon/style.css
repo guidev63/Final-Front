@@ -24,7 +24,7 @@ input {
     border-radius: 20px;
     font-size: 16px;
     transition: border-color 0.3s;
-    width: calc(100% - 40px); /* Ajuste a largura dos inputs */
+    width: 100%; /* Defina a largura dos inputs como 100% */
 }
 
 img {
@@ -34,11 +34,12 @@ img {
 .logo {
     display: flex;
     justify-content: center;
-    align-items: center; /* Adicione esta linha */
+    align-items: center;
 }
+
 .logo img {
-    width: auto; /* Remova esta linha se desejar manter o tamanho original */
-    max-width: 55%; /* Adicione esta linha para garantir que a imagem não ultrapasse seu contêiner */
+    width: auto;
+    max-width: 55%;
 }
 
 button {
@@ -74,7 +75,7 @@ button:active {
 .input-with-icon input[type="email"],
 .input-with-icon input[type="password"] {
     padding-left: 30px;
-    width: calc(100% - 40px); /* Ajuste a largura dos inputs */
+    width: 100%; /* Defina a largura dos inputs como 100% */
 }
 
 .input-with-icon .input-icon {
@@ -83,16 +84,16 @@ button:active {
     top: 50%;
     transform: translateY(-50%);
 }
+
 .spin {
     animation: spin 1s infinite linear;
-  }
-  
-  @keyframes spin {
+}
+
+@keyframes spin {
     from {
-      transform: rotate(0);
+        transform: rotate(0);
     }
     to {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-  
+}

@@ -73,8 +73,6 @@ export default function ListaServicos() {
               <th>Nome</th>
               <th>Descrição</th>
               <th>Preço</th>
-              <th>Criado</th>
-              <th>Data E horas Atualizada </th>
             </tr>
           </thead>
           <tbody>
@@ -84,8 +82,6 @@ export default function ListaServicos() {
                 <td>{servico.nome}</td>
                 <td>{servico.descricao}</td>
                 <td>{servico.preco}</td>
-                <td>{servico.createAt}</td>
-                <td>{servico.updateAt}</td>
                 <td className='botoes'>
                   <Link to={`/editarservico/${servico.id}`}>
                     <FiEdit size={18} color='#3a5795' />

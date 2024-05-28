@@ -64,12 +64,12 @@ export default function Menu() {
                     <FaClipboardList  className='icon' /> {}
                     Ordens De Serviços 
                 </Link>
-
-
-                <Link to="/listaorcamento" className='link'>
-                    <RiMoneyDollarCircleFill className='icon' size={22} style={{ verticalAlign: 'middle' }} />
-                    Faturamento
+                <Link to="/listarfaturamento" className='link'>
+                    <FaClipboardList  className='icon' /> {}
+                    Faturamento 
                 </Link>
+
+         
             </nav>
         </div>
     )

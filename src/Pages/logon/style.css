@@ -54,12 +54,16 @@ button {
     margin-top: 10px;
     height: 40px;
     width: 100%; /* Defina a largura do botão como 100% */
+    
+    
 }
 
 button:active {
+    
     background-color: #004080;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
     transform: scale(0.95);
+    
 }
 
 .link-container {
@@ -70,6 +74,7 @@ button:active {
 
 .input-with-icon {
     position: relative;
+
 }
 
 .input-with-icon input[type="email"],

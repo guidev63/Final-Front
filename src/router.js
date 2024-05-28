@@ -6,7 +6,6 @@ import Listausuario from './Pages/listarUsuario';
 
 
 import Cadastrousuario from './Pages/CadastroUsuario';
-import Editarusuario from './Pages/editarUsuario';
 import Editarproduto from './Pages/editarProduto';
 import Listarproduto from './Pages/listarProduto';
 import Cadastrosaida from './Pages/cadastroSaida';
@@ -19,22 +18,26 @@ import CadastroFornecedores from './Pages/CadastroFornecedores';
 import Listarentrada from './Pages/ListarEntrada';
 import Listarestoque from './Pages/listarestoque';
 import CadastroCliente from './Pages/CadastrodeClientes';
-import EditarCliente from './Pages/editarClientes';
 import ListaFornecedores from './Pages/listarFornecedores';
 
+
 import EditarFornecedor from './Pages/editarFornecedores';
+import EditarCliente from './Pages/editarClientes';
+import Editarusuario from './Pages/editarUsuario';
+import EditarServico from './Pages/editarServicos';
+
+
 
 import ListaServicos from './Pages/listarServicos';
 import ListaChecklist from './Pages/listarChecklist';
 import ListaVendas from './Pages/listarVendas';
 import ListaPagamentos from './Pages/listarPagamentos';
-import CadastroServico from './Pages/CadastrodeServicos';
-
-import EditarServico from './Pages/editarServicos';
+import ListaFaturamentos from './Pages/listarFaturamento';
 
 import CadastroChecklist from './Pages/CadastrodeChecklist';
 import CadastroPagamentos from './Pages/CadastrodePagamentos';
-
+import CadastroServico from './Pages/CadastrodeServicos';
+import CadastroFaturamento from './Pages/cadastroFaturamento';
 
 
 export default function Rotas() {
@@ -57,7 +60,8 @@ export default function Rotas() {
                 <Route path="/listarChecklist" element={< ListaChecklist />} /> {}
                 <Route path="/listarVendas" element={< ListaVendas />} /> {}
                 <Route path="/listarPagamentos" element={< ListaPagamentos />} /> {}
-     
+                <Route path="/listarfaturamento" element={< ListaFaturamentos />} /> {}
+       
 
 
 
@@ -70,7 +74,9 @@ export default function Rotas() {
                 <Route path="/cadastrarfornecedor" element={<CadastroFornecedores />} />
                 <Route path="/cadastrarservico" element={<CadastroServico />} />
                 <Route path="/cadastrarchecklist" element={<CadastroChecklist />} />
-
+                <Route path="/cadastropagamento" element={<CadastroPagamentos />} />
+                <Route path="/cadastrarfaturamento" element={<CadastroFaturamento />} />
+                
 
     
 

@@ -44,10 +44,16 @@ export default function CadastroPagamentos() {
                 <Head title="Cadastro de Pagamentos" />
                 <div className='form-container'>
                     <form className='cadastro-servico-form' onSubmit={handleCadastro}>
-                        <input type='text' value={faturamento_id} onChange={e => setFaturamentoId(e.target.value)} placeholder='Faturamento ID' />
+                        <select value={faturamento_id} onChange={e => setFaturamentoId(e.target.value)} className="input-faturamento">
+                            <option value="" disabled>Selecionar Faturamento ID</option>
+                            <option value="1">Faturamento 1</option>
+                            <option value="2">Faturamento 2</option>
+                            <option value="3">Faturamento 3</option>
+                            {/* Adicione mais opções conforme necessário */}
+                        </select>
                         <input type='text' value={valor_pago} onChange={e => setValorPago(e.target.value)} placeholder='Valor Pago' />
                         <input type='date' value={data_pagamento} onChange={e => setDataPagamento(e.target.value)} placeholder='Data do Pagamento' />
-                        <div>
+                        <div className='btn-container'>
                             <button type="submit" className='btn-save'>
                                 <FaSave />
                                 Salvar
@@ -58,9 +64,6 @@ export default function CadastroPagamentos() {
                             </button>
                         </div>
                     </form>
-                    <button type="button" className='btn-novo' onClick={() => navigate('/cadastropagamentos')}>
-                        Novo Cadastro
-                    </button>
                 </div>
             </div>
         </div>

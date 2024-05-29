@@ -13,31 +13,33 @@ body {
     font-family: Arial, sans-serif;
 }
 
+/* Container principal da dashboard */
 .dashboard-container {
     background-color: #0055b3;
     height: 100vh;
     display: flex;
     flex-direction: row;
-    width: 90%;
-    margin: auto;
+    width: 100%; /* Ocupar toda a largura da tela */
     overflow: hidden; /* Previne que o conteúdo extravase a tela */
 }
 
+/* Estilo do menu lateral */
 .menu {
     width: 20%;
     background-color: #ffffff;
-    margin: 5px;
     transition: background-color 0.3s ease;
     overflow-y: auto; /* Adiciona rolagem vertical se necessário */
+    margin-right: 5px; /* Margem à direita para separar do principal */
 }
 
+/* Estilo da área principal */
 .principal {
-    width: 80%;
+    flex-grow: 1; /* Ocupar o espaço restante */
     background-color: #ffffff;
-    margin: 5px;
     padding: 5px;
     transition: background-color 0.3s ease;
     overflow-x: auto; /* Adiciona rolagem horizontal se necessário */
+    margin-right: 0; /* Remover margem direita */
 }
 
 table {

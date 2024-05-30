@@ -1,50 +1,51 @@
-.dashboard-container{
-    background-color:black;
-    height:100vh;
+.dashboard-container {
+    background-color: black;
+    height: 100vh;
     display: flex;
     flex-direction: row;
     width: 90%;
     margin: auto;
 }
-*{
+
+* {
     padding: 0%;
     margin: 0%;
 }
-.menu{
+
+.menu {
     width: 20%;
- background-color: #ffffff;
- margin:5px;
+    background-color: #ffffff;
+    margin: 5px;
 }
-.principal{
+
+.principal {
     width: 80%;
     background-color: #ffffff;
-    margin:5px;
+    margin: 5px;
 }
-.client-image{
-    border-radius: 70%;
-    width: 200px;
-    border: 5px solid transparent;
-    
-    
 
-}
-.fornecedor-image{
+.client-image,
+.fornecedor-image,
+.clientes-image,
+.mecanico-image,
+.servico-image,
+.pagamentos-image,
+.faturamento-image,
+.estoque-image {
     border-radius: 70%;
-    width: 200px;
-border: 5px solid transparent;
+    width: 180px;
+    border: 5px solid transparent;
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Adicionando transições */
 }
-.clientes-image{
-    border-radius: 70%;
-    width: 200px;
-border: 5px solid transparent;
-}
-.mecanico-image{
-    border-radius: 70%;
-    width: 200px;
-border: 5px solid transparent;
-}
-.servico-image{
-    border-radius: 70%;
-    width: 200px;
-border: 5px solid transparent;
+
+/* Adicionando efeito de movimento quando o mouse passa sobre a imagem */
+.client-image:hover,
+.fornecedor-image:hover,
+.clientes-image:hover,
+.mecanico-image:hover,
+.servico-image:hover,
+.pagamentos-image:hover,
+.faturamento-image:hover,
+.estoque-image:hover {
+    transform: translateY(-5px); /* Move a imagem 5 pixels para cima */
 }

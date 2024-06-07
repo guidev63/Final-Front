@@ -24,6 +24,10 @@ import FaturamentoImage from '../../assets/img/Faturamento.png'; // caminho para
 
 import EstoqueImage from '../../assets/img/estoque.png' // Caminho Para a imagem Do Estoque
 
+import VendasImage from '../../assets/img/vendas.png' // Caminho Para a imagem Do Vendas
+
+import ParcelasImage from '../../assets/img/parcelas.png' // Caminho Para a imagem Da Parcelas
+
 import { Link } from 'react-router-dom'; // Adicione esta linha para garantir que o Link funcione corretamente
 
 export default function Dashboard() {
@@ -49,13 +53,19 @@ export default function Dashboard() {
                     <img src={ServicoImage} alt="servico" className="servico-image" /> {/* Adicionando a imagem do Serviços */}
                 </Link>
                 <Link to="/listarPagamentos">
-                    <img src={PagamentosImage} alt="pagamentos" className="pagamentos-image" /> {/* Adicionando a imagem do Pagamento */}
+                    <img src={PagamentosImage} alt="pagamentos" className="pagamentos-image" /> {/* Adicionando a imagem do Pagamentos */}
                 </Link>
                 <Link to="/listarfaturamento">
                     <img src={FaturamentoImage} alt="faturamento" className="faturamento-image" /> {/* Adicionando a imagem do Faturamento */}
                 </Link>
                 <Link to="/listarestoque">
-                    <img src={EstoqueImage} alt="estoque" className="estoque-image" /> {/* Adicionando a imagem do Faturamento */}
+                    <img src={EstoqueImage} alt="estoque" className="estoque-image" /> {/* Adicionando a imagem do Estoque  */}
+                </Link>
+                <Link to="/listarvendas">
+                    <img src={VendasImage} alt="vendas" className="vendas-image" /> {/* Adicionando a imagem do Vendas */}
+                </Link>
+                <Link to="/listarparcelas">
+                    <img src={ParcelasImage} alt="parcelas" className="parcelas-image" /> {/* Adicionando a imagem do Parcelas */}
                 </Link>
                 
             </div>

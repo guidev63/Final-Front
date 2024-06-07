@@ -33,12 +33,14 @@ import ListaChecklist from './Pages/listarChecklist';
 import ListaVendas from './Pages/listarVendas';
 import ListaPagamentos from './Pages/listarPagamentos';
 import ListaFaturamentos from './Pages/listarFaturamento';
+import ListaParcelas from './Pages/listarparcelas/indx';    
+
 
 import CadastroChecklist from './Pages/CadastrodeChecklist';
 import CadastroPagamentos from './Pages/CadastrodePagamentos';
 import CadastroServico from './Pages/CadastrodeServicos';
 import CadastroFaturamento from './Pages/cadastroFaturamento';
-
+import CadastroParcela from './Pages/CadastroParcelas';
 
 export default function Rotas() {
     return (
@@ -61,6 +63,7 @@ export default function Rotas() {
                 <Route path="/listarVendas" element={< ListaVendas />} /> {}
                 <Route path="/listarPagamentos" element={< ListaPagamentos />} /> {}
                 <Route path="/listarfaturamento" element={< ListaFaturamentos />} /> {}
+                <Route path="/listarparcelas" element={<  ListaParcelas/>} /> {}
        
 
 
@@ -76,6 +79,7 @@ export default function Rotas() {
                 <Route path="/cadastrarchecklist" element={<CadastroChecklist />} />
                 <Route path="/cadastropagamento" element={<CadastroPagamentos />} />
                 <Route path="/cadastrarfaturamento" element={<CadastroFaturamento />} />
+                <Route path="/cadastroparcela" element={<CadastroParcela />} />
                 
 
     

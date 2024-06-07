@@ -1,0 +1,24 @@
+/* CSS */
+.select-styled select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 16px;
+}
+
+.select-styled select:focus {
+    outline: none;
+    border-color: #007BFF; /* Altere para a cor desejada */
+}
+
+/* Estilizando a opção de seleção */
+.select-styled option[value=""] {
+    color: #999; /* Altere para a cor desejada */
+}
+

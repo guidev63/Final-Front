@@ -16,6 +16,7 @@
     width: 20%;
     background-color: #ffffff;
     margin: 5px;
+    
 }
 
 .principal {
@@ -31,7 +32,9 @@
 .servico-image,
 .pagamentos-image,
 .faturamento-image,
-.estoque-image {
+.estoque-image,
+.vendas-image,
+.parcelas-image{
     border-radius: 70%;
     width: 180px;
     border: 5px solid transparent;
@@ -46,6 +49,8 @@
 .servico-image:hover,
 .pagamentos-image:hover,
 .faturamento-image:hover,
-.estoque-image:hover {
+.estoque-image:hover,
+.vendas-image:hover,
+.parcelas-image:hover{
     transform: translateY(-5px); /* Move a imagem 5 pixels para cima */
 }

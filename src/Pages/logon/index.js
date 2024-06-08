@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './style.css';
-import Logo from '../../assets/img/Service Car Logo.png';
+import Logo from '../../assets/img/Mecanicaservices.png';
 import { useNavigate } from 'react-router-dom';
-import { FaUser, FaKey, FaSpinner } from "react-icons/fa"; // Importe os ícones de usuário, chave e spinner do Font Awesome
+import { FaUser, FaKey, FaSpinner, FaEye, FaEyeSlash } from "react-icons/fa"; // Importe os ícones de usuário, chave, spinner e olho
 
 import api from '../../server/api';
 
@@ -11,6 +11,7 @@ export default function Logon() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [loading, setLoading] = useState(false); // Estado para controlar o carregamento
+  const [showPassword, setShowPassword] = useState(false); // Estado para controlar a exibição da senha
 
   const logar = (e) => {
     e.preventDefault();
@@ -34,6 +35,10 @@ export default function Logon() {
       });
   }
 
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="logon-container">
       <div className="logo">
@@ -54,19 +59,22 @@ export default function Logon() {
           </div>
           <div className="input-with-icon">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Insira sua senha de Acesso"
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
               required
             />
             <FaKey className="input-icon" /> {/* Use o ícone FaKey aqui */}
+            <span className="input-icon-right" onClick={toggleShowPassword}>
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
           </div>
           <button type="submit" disabled={loading}>
             {loading ? <FaSpinner className="loading-spinner spin" /> : 'Acessar'}
           </button>
           <div className="link-container">
-            <a>Não tem uma conta? Cadastre-se</a>
+            <a href="/cadastro">Não tem uma conta? Cadastre-se</a>
           </div>
         </form>
       </section>
